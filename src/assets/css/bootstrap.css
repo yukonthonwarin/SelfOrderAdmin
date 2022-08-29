@@ -660,6 +660,7 @@ pre code {
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
+  align-items: center;
 }
 
 .row-cols-4 > * {
@@ -2189,6 +2190,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  
 }
 
 .form-text {
@@ -2760,6 +2762,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
+  text-align:center;
 }
 
 .btn-danger:hover {

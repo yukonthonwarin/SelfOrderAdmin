@@ -1521,8 +1521,9 @@ button:focus {
   outline: 0 !important;
 }
 .btn {
-  border-radius: 3px;
+  border-radius: 10px;
   font-size: inherit;
+  
 }
 .btn:focus {
   box-shadow: none;
@@ -4171,9 +4172,14 @@ body.tour-open .animated {
   border: 1px dashed #1ab394;
   background: white;
   padding: 20px 20px;
+  color: #ec008c;
+  font-weight: 700;
+  vertical-align: middle;
+  text-align: center;
 }
 .dropzone .dz-message {
   font-size: 16px;
+  
 }
 /* Activity stream */
 .stream {
