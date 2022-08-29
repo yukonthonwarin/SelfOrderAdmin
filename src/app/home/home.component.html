@@ -43,34 +43,45 @@
             <div class="logo-element">IN+</div>
           </li>
           <li class="active">
-            <a href="home"
-              ><i class="fa fa-bar-chart"></i>
+            <a [routerLink]="'/dashboard'" >
+              <i class="fa fa-bar-chart"></i>
               <span class="nav-label">แดชบอร์ด</span>
             </a>
           </li>
 
           <li>
-            <a href="report.html"
-              ><i class="fa fa-file-text"></i>
-              <span class="nav-label">รายงานการขาย</span></a
-            >
+            <a [routerLink]="'/report'" >
+              <i class="fa fa-file-text"></i>
+              <span class="nav-label">รายงานการขาย</span>
+            </a>
           </li>
 
           <li>
-            <a href="checklist.html"
-              ><i class="fa fa-folder-open"></i>
+            <a [routerLink]="'/checklist'"  >
+              <i class="fa fa-folder-open"></i>
               <span class="nav-label">ตรวจสอบรายการ</span>
-              <span class="fa arrow"></span
-            ></a>
+            </a>
           </li>
-
+ 
           <li>
-            <a href="setting.html"
-              ><i class="fa fa-cog"></i>
-              <span class="nav-label">ตั้งค่า</span>
-              <span class="fa arrow"></span
-            ></a>
-          </li>
+            <a (click)="isCollapsed=!isCollapsed"   >
+              <i class="fa fa-cog"></i> 
+              <span class="nav-label">ตั้งค่า </span>
+              <span class="fa arrow"></span>
+            </a>
+            
+              <ul class="nav nav-second-level collapse" [ngClass]="{'show': isCollapsed}" >
+                <li><a [routerLink]="'/restaurant'">ร้านอาหาร</a></li>
+                <li><a [routerLink]="'/zone'">โซน</a></li>
+                <li><a [routerLink]="'/table'">โต้ะ</a></li>
+                <li><a [routerLink]="'/menu'">หมวดหมู่</a></li>
+                <li><a [routerLink]="'/item'">อาหาร</a></li>
+                <li><a [routerLink]="'/user'">ผู้ใช้</a></li> 
+              </ul>
+            
+            
+        </li>
+
         </ul>
       </div>
     </nav>
@@ -156,13 +167,11 @@
           </ul>
         </nav>
       </div>
-      <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-10">
-          <h2>แดชบอร์ด</h2>
-        </div>
-        <div class="col-lg-2"></div>
-      </div>
-      <div class="wrapper wrapper-content"></div>
+
+
+
+      <router-outlet></router-outlet>
+      
     </div>
   </div>
 

@@ -9,13 +9,13 @@
         <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
       </p>
       <p>Login in. To see it in action.</p>
-      <form class="m-t" role="form" action="home">
+    
         <div class="form-group">
           <input
-            type="email"
+            type="text"
             class="form-control"
             placeholder="Username"
-            required=""
+            required [(ngModel)]='c_username'  
           />
         </div>
         <div class="form-group">
@@ -23,13 +23,12 @@
             type="password"
             class="form-control"
             placeholder="Password"
-            required=""
+            required [(ngModel)]='c_password'  
           />
         </div>
-        <button type="submit" class="btn btn-primary block full-width m-b">
+        <button type="button" class="btn btn-primary block full-width m-b" (click)="login()">
           Login
-        </button>
-      </form>
+        </button> 
       <p class="m-t"><small></small></p>
     </div>
   </div>
