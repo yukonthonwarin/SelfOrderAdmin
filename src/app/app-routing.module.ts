@@ -11,7 +11,12 @@ import { UserComponent } from './setting/user/user.component';
 import { MenuComponent } from './setting/menu/menu.component';
 import { ItemComponent } from './setting/item/item.component';
 import { ChecklistComponent } from './checklist/checklist.component';
-
+import { SpecialComponent } from './setting/special/special.component';
+import { SpecialGroupComponent } from './setting/special-group/special-group.component';
+import { RecommendComponent } from './setting/recommend/recommend.component';
+import { PrinterComponent } from './setting/printer/printer.component';
+import { AddUserComponent } from './setting/user/add-user/add-user.component';
+import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
 // const routes: Routes = [
 //   {path:"",pathMatch:"full",redirectTo: "login"},
 //   {path:"login",component: LoginComponent},
@@ -40,6 +45,12 @@ const routes: Routes = [
       {path:"menu",component: MenuComponent},
       {path:"item",component: ItemComponent},
       {path:"user",component: UserComponent},
+      {path:"special",component: SpecialComponent},
+      {path:"special-group",component: SpecialGroupComponent},
+      {path:"recommend",component: RecommendComponent},
+      {path:"printer",component: PrinterComponent},
+      {path:"adduser",component: AddUserComponent},
+      {path: "edituser",component: EditUserComponent}
     ]
   },
    

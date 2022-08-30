@@ -21,6 +21,9 @@ import { ChecklistComponent } from './checklist/checklist.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddUserComponent } from './setting/user/add-user/add-user.component';
+import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
+
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     ZoneComponent,
     SpecialComponent,
     SpecialGroupComponent, 
-    ReportComponent, ChecklistComponent,
+    ReportComponent,
+    ChecklistComponent,
+    AddUserComponent,
+    EditUserComponent
     
   ],
   imports: [

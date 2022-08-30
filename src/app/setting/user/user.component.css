@@ -1,0 +1,14 @@
+.thead-color {
+background-color: #19C0A0;
+height: 60px;
+
+justify-content: center;
+align-items: center;
+text-align: center;
+
+}
+.tbody{
+    justify-content: center;
+align-items: center;
+text-align: center;
+}
