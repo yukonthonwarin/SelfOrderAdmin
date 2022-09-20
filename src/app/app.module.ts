@@ -23,6 +23,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUserComponent } from './setting/user/add-user/add-user.component';
 import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
+import { EditItemComponent } from './setting/item/edit-item/edit-item.component';
+import { AddItemComponent } from './setting/item/add-item/add-item.component';
+import { AddMenuComponent } from './setting/menu/add-menu/add-menu.component';
+import { EditMenuComponent } from './setting/menu/edit-menu/edit-menu.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -44,7 +49,12 @@ import { EditUserComponent } from './setting/user/edit-user/edit-user.component'
     ReportComponent,
     ChecklistComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditItemComponent,
+    AddItemComponent,
+    AddMenuComponent,
+    EditMenuComponent,
+    RegisterComponent
     
   ],
   imports: [

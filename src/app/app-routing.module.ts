@@ -17,6 +17,9 @@ import { RecommendComponent } from './setting/recommend/recommend.component';
 import { PrinterComponent } from './setting/printer/printer.component';
 import { AddUserComponent } from './setting/user/add-user/add-user.component';
 import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
+import { EditItemComponent } from './setting/item/edit-item/edit-item.component';
+import { AddItemComponent } from './setting/item/add-item/add-item.component';
+import { RegisterComponent } from './register/register.component';
 // const routes: Routes = [
 //   {path:"",pathMatch:"full",redirectTo: "login"},
 //   {path:"login",component: LoginComponent},
@@ -31,7 +34,7 @@ import { EditUserComponent } from './setting/user/edit-user/edit-user.component'
 const routes: Routes = [ 
   {path:"",pathMatch:"full",redirectTo: "login"},
   {path:"login",component: LoginComponent},
-
+  {path:"register",component: RegisterComponent},
   {
     path: '', 
     component: HomeComponent, 
@@ -50,7 +53,10 @@ const routes: Routes = [
       {path:"recommend",component: RecommendComponent},
       {path:"printer",component: PrinterComponent},
       {path:"adduser",component: AddUserComponent},
-      {path: "edituser",component: EditUserComponent}
+      {path: "edituser",component: EditUserComponent},
+      {path:"additem",component: AddItemComponent},
+      {path:"edititem",component: EditItemComponent},
+      
     ]
   },
    

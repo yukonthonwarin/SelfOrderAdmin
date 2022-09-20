@@ -1,0 +1,82 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>ตั้งค่า</h2>
+      <h5>รายการอาหาร</h5>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  
+  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="box_general padding_bottom">
+        <h2>เพิ่มรายการอาหาร</h2>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label">ชื่ออาหาร</label>
+        <div class="col-sm-3"><input type="text" class="form-control" /></div>
+      </div>
+      <div class="form-group row">
+          <label class="col-sm-1 col-form-label">item name</label>
+          <div class="col-sm-3"><input type="text" class="form-control" /></div>
+        </div>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label">ราคา</label>
+        <div class="col-sm-3"><input type="text" class="form-control" /></div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label">หมวดอาหาร</label>
+  
+        <div class="col-sm-3">
+          <select class="form-control m-b" name="account">
+            <option></option>
+            <option>อาหาร</option>
+            <option>เครื่องดื่ม</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-sm-1 col-form-label">กลุ่มรายการพิเศษ</label>
+    
+          <div class="col-sm-3">
+            <select class="form-control m-b" name="account">
+              <option></option>
+              <option>เมนูตำ</option>
+              <option>เมนูลาบแซ่บ</option>
+              <option>เมนูต้มยำ</option>
+              <option>เมนูยำ</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-1 col-form-label">เครื่องพิมพ์</label>
+    
+          <div class="col-sm-3">
+            <select class="form-control m-b" name="account">
+              <option></option>
+              <option>ห้องครัว</option>
+              <option>เค้าเตอร์</option>
+            </select>
+          </div>
+        </div>
+      <div class="form-group row">
+        <div class="col-sm-1 col-form-label">
+          <label>รูปอาหาร</label>
+          <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename" />
+          </form>
+        </div>
+      </div>
+  
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" type="submit">บันทึก</button>
+        <button
+          class="btn btn-danger btn-lg"
+          type="submit"
+          [routerLink]="'/item'"
+        >
+          ยกเลิก
+        </button>
+      </div>
+    </div>
+  </div>
+  

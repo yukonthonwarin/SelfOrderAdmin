@@ -8,16 +8,19 @@
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
   <div class="ibox-content m-b-sm border-bottom">
-    
     <div class="box_general padding_bottom">
-      <h4>รายชื่อผู้ใช้งานระบบ</h4>
-      <div class="box_general padding_bottom text-right">
-      <button class="btn-primary btn btn-lg" [routerLink]="'/adduser'"><i class="fa fa-plus">เพิ่ม
-        
-      </i></button>
-      
+      <div class="row">
+        <div class="col-sm-4">
+            <h2>รายชื่อผู้ใช้งานระบบ</h2>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-group text-right">
+            <button class="btn-primary btn btn-lg" [routerLink]="'/adduser'">
+              <i class="fa fa-plus">เพิ่ม </i>
+            </button>
+          </div>
+        </div>
       </div>
-        
     </div>
   </div>
   <div class="row">
@@ -53,7 +56,7 @@
                 >
                   นามสกุล<span class="footable-sort-indicator"></span>
                 </th>
-                
+
                 <th
                   data-hide="phone"
                   class="footable-visible footable-sortable"
@@ -68,7 +71,7 @@
               </tr>
             </thead>
             <tbody class="tbody">
-              <tr class="footable-even" style="">
+              <tr class="footable-even">
                 <td class="footable-visible footable-first-column">
                   <span class="footable-toggle"></span>
                   3214
@@ -81,23 +84,17 @@
                 </td>
                 <td class="text-right footable-visible footable-last-column">
                   <div class="btn-group">
-                    
-                    <ul>
-                      <button class="btn-primary btn btn-lg" [routerLink]="'/edituser'">Edit</button>
-                    </ul>
-                    <ul>
-                     <button class="btn-danger btn btn-lg">Delete</button> 
-                    </ul>
-                    
+                    <button
+                      class="btn-white btn btn-xs"
+                      [routerLink]="'/edituser'"
+                    >
+                      Edit
+                    </button>
+                    <button class="btn-white btn btn-xs">Delete</button>
                   </div>
                 </td>
               </tr>
-              
-              
-              
-              
             </tbody>
-            
           </table>
         </div>
       </div>
