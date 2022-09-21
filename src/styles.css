@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&display=swap');
 
 html body {
-    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-family: 'Prompt-Regular', Prompt;
 }
 body * {
-    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-family: 'Prompt-Regular', Prompt;
     
 }
