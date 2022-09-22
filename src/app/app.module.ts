@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiserviceService } from './apiservice.service';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,6 +64,7 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
   ],
   providers: [ApiserviceService],
   bootstrap: [AppComponent]
