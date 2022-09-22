@@ -7,9 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ApiserviceService { 
+ 
+ 
   constructor(private http: HttpClient) { 
-
+    
   }
+
+  
     
   login(c_username:string, c_password:string){
     // let _headers = new HttpHeaders({
@@ -24,6 +28,11 @@ export class ApiserviceService {
     return this.http.post<any>(environment.baseURL+'user.login', body, { headers: _headers });
   }
   
+  getRestaurantInfo() {
+    
+    return this.http.get<any[]>(`${environment.baseURL}restaurant.info?uuid=` +localStorage.uuid,
+    );
+  }
   
 }
 

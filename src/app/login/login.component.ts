@@ -10,8 +10,8 @@ import { ApiserviceService } from '../apiservice.service';
 })
 export class LoginComponent implements OnInit {
   
-  c_username : string = 'admin@0002';
-  c_password : string = 'fr-123456';
+  c_username : string = '';
+  c_password : string = '';
  
   constructor(private router: Router, private api: ApiserviceService) { 
  
@@ -32,4 +32,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  
 }
