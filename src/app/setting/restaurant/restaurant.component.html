@@ -28,7 +28,8 @@
                   />
                 </svg>
               </label>
-              <input type="text" class="form-control" placeholder="" />
+              <input type="text" class="form-control" placeholder =""  required [(ngModel)]='restaurantInfo.lng1_c_name' />
+              
             </div>
           </div>
 
@@ -61,7 +62,7 @@
                   />
                 </svg>
               </label>
-              <input type="text" class="form-control" placeholder =""  />
+              <input type="text" class="form-control" placeholder =""  required [(ngModel)]='restaurantInfo.lng2_c_name' />
             </div>
           </div>
           <!-- /row-->
@@ -72,6 +73,7 @@
               <form action="/action_page.php">
                 <input type="file" id="myFile" name="filename" />
               </form>
+              
             </div>
           </div>
 

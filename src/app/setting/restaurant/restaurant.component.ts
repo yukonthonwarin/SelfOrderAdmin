@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgForm} from '@angular/forms';
+
 import { ApiserviceService } from 'src/app/apiservice.service';
 import { Router } from '@angular/router';
 @Component({
@@ -8,13 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-  lng1_c_name : any ;
- 
+  //สร้างตัวแปรสำหรับเก็บข้อมูลที่ดึงมาจาก 
+  restaurantInfo : any;
+ //ใน constructor กำหนด ให้ apiService เป็นตัวแปรแบบ private และ เรียกใช้งาน ApiService
   constructor(private router: Router, private api: ApiserviceService) { }
 
   ngOnInit(): void {
+    //เรียก function getData เมื่อ App เริ่มทำงาน
+    this.getRestaurantInfo();
   }
   
+  async getRestaurantInfo() { 
+    let mDataArray : any  = await this.api.getRestaurantInfo().toPromise(); 
+    this.restaurantInfo =  mDataArray.c_data;
+
+    localStorage.setItem("restaurantInfo", JSON.stringify(this.restaurantInfo));
  
+  }  
 
 }
