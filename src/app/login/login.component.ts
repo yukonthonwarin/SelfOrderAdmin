@@ -12,13 +12,13 @@ export class LoginComponent implements OnInit {
   
   c_username : string = 'user@1002';
   c_password : string = 'fr-123456';
- 
+  restaurantInfo : any;
   constructor(private router: Router, private api: ApiserviceService) { 
  
   }
 
   ngOnInit(): void { 
-     
+    this.getRestaurantInfo();
   }
 
   async login(){ 
@@ -31,6 +31,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     }
   }
+  async getRestaurantInfo() { 
+    let mDataArray : any  = await this.api.getRestaurantInfo().toPromise(); 
+    this.restaurantInfo =  mDataArray.c_data;
 
+    localStorage.setItem("restaurantInfo", JSON.stringify(this.restaurantInfo));
+ 
+  }  
   
 }
