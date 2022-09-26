@@ -1,30 +1,20 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
       <h2>ตั้งค่า</h2>
-      <h3>โต้ะ</h3>
+      <h3>หน่วย</h3>
     </div>
    
-</div>
-
-<div *ngIf="!isEdit">
+  </div>
+  
+  <div *ngIf="!isEdit">
   <div class="wrapper wrapper-content animated fadeInRight ecommerce">
     <div class="ibox-content m-b-sm border-bottom">
       <div class="box_general padding_bottom">
         <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-                <label>โซน</label>
-                <select   class="form-control" [(ngModel)]="currentZoneId" (change)="doGet()">
-                    <option value="">แสดงทั้งหมด</option>
-                    <option *ngFor="let zone of zoneList" [value]="zone.zone_id">{{ zone.lng1_c_name }}</option>
-                </select>
-             
-              </div>
-
-            
+          <div class="col-sm-4">
+              <h2>หน่วย</h2>
           </div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
+          <div class="col-sm-8">
             <div class="form-group text-right"> 
               <button class="btn-primary btn btn-lg" (click)="add()" >
                 <i class="fa fa-plus"> เพิ่ม </i>
@@ -44,9 +34,9 @@
                 <tr >
                   <th class="text-center"> ลำดับ </th>
                   <th  class="text-center">รูป</th>
-                  <th> Table Name <img src="assets/img/flags/16/uk.png"> </th>
-                  <th> ชื่อโต้ะ <img src="assets/img/flags/16/th.png"> </th> 
-                  <th class="text-center"> โซน </th> 
+                  <th> Unit Name <img src="assets/img/flags/16/uk.png"> </th> 
+                  <th> ชื่อหน่วย <img src="assets/img/flags/16/th.png"> </th> 
+                  
                   <th class="text-center"> Action </th>
                 </tr>
               </thead>
@@ -58,11 +48,12 @@
                   </td>
                   <td>{{row.lng1_c_name }}</td>
                   <td>{{row.lng2_c_name }}</td>
-                  <td class="text-center">{{ zoneObjList[row.zone_id].lng1_c_name  }}</td> 
+                  
                   <td class="text-center">
-                    <div class="btn-group"> 
-                      <button class="btn-warning btn-outline btn btn-sm btn-80" (click)="edit(row)"> แก้ไข </button>
-                      <button class="btn-danger btn-outline btn btn-sm btn-80" (click)="delete(row)"> ลบ </button>
+                    <div class="btn-group">
+                      <!-- <button class="btn-warning btn-outline btn btn-sm btn-80" [routerLink]="'/edititem'"> Edit</button> -->
+                      <button class="btn-warning btn-outline btn btn-sm btn-80" (click)="edit(row)"> แก้ไข</button>
+                      <button class="btn-danger btn-outline btn btn-sm btn-80" (click)="delete(row)">ลบ</button>
                     </div>
                   </td>
                 </tr>
@@ -73,44 +64,36 @@
       </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="isEdit">
-
+  </div>
+  
+  <div *ngIf="isEdit">
+  
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
         <div class="ibox-content m-b-sm border-bottom">
           <div class="box_general padding_bottom">
-            <h2>{{mode}}โต๊ะ</h2>
+            <h2>{{mode}}หน่วย</h2>
           </div>
-
+  
           <div class="text-center m-b-sm">
             <img [src]="currentRow.c_media_name || 'assets/img/no-image.jpg' " width="300px"> 
           </div>
        
-    <form [formGroup]="myForm"  validate (submit)="doPost()"> 
           <div class="row">  
             <div class="col-md-6">
               <div class="form-group">
-                <label>รูปโซน</label>
-                <input type="file" class="form-control" id="myPhoto" name="filename" (change)="onImageChange($event)" accept=".jpg, .gif, .png" /> 
+                <label>รูปหน่วย</label>
+                <input type="file" class="form-control" id="myPhoto" name="filename" (change)="onImageChange($event)" accept=".jpg, .gif, .png" />
+             
               </div>
-            </div> 
-            <div class="col-md-6">
-                <div class="form-group" [ngClass]="{'has-error  text-danger':myFormControl.zone_id.errors?.required }">
-                    <label>โซน</label>
-                    <select class="form-control" formControlName="zone_id"  > 
-                        <option *ngFor="let zone of zoneList" [ngValue]="zone.zone_id">{{ zone.lng1_c_name }}</option>
-                    </select> 
-                    <span class="form-text text-danger" *ngIf="myFormControl.zone_id.errors?.required">required * </span>
-                </div>
             </div>
           </div>
           <!-- /row-->
- 
+  
+        <form [formGroup]="myForm"  validate (submit)="doPost()">
           <div class="row">
             <div class="col-md-6 "> 
               <div class="form-group " [ngClass]="{'has-error  text-danger':myFormControl.lng1_c_name.errors?.required }">
-                <label > Zone Name <img src="assets/img/flags/16/uk.png"></label>
+                <label > Unit Name <img src="assets/img/flags/16/uk.png"></label> 
                 <input type="text" class="form-control" formControlName="lng1_c_name"    />
                 <span class="form-text text-danger" *ngIf="myFormControl.lng1_c_name.errors?.required">required * </span>
               </div>
@@ -118,13 +101,13 @@
     
             <div class="col-md-6 ">
               <div class="form-group">
-                <label > ชื่อโซน  <img src="assets/img/flags/16/th.png"></label>
+                <label > ชื่อหน่วย <img src="assets/img/flags/16/th.png"></label>
                 <input type="text" class="form-control" formControlName="lng2_c_name"  />
               </div>
             </div>
           </div>
           <!-- /row-->
-
+  
           <div class="row"> 
             <div class="col-md-6 ">
               <div class="form-group">
@@ -134,16 +117,16 @@
             </div>
           </div>
           <!-- /row-->
- 
- 
+  
+  
       
           <div class="text-right">
             <button class="btn btn-danger btn-outline btn-80 btn-lg m-r-sm" type="button" (click)="cancel()">ยกเลิก</button>
             <button class="btn btn-primary btn-80 btn-lg" type="submit">บันทึก</button> 
           </div>
         </form>
-
+  
         </div>
       </div>
- 
-</div>
+  
+  </div>

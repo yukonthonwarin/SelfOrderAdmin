@@ -1,0 +1,11 @@
+get /restaurant.info ไม่มี id ส่งกลับมา
+post /fr.setzone.save ส่ง e_status=inactive แล้วสร้าง row ใหม่
+get /fr.settable.list ไม่ส่ง c_code กลับมา ทำให้เรียก post /fr.settable.save ไม่ได้
+post /fr.setmenu.save ส่ง e_status=inactive แล้วมี error
+    Message: Invalid argument supplied for foreach()
+    File: /mnt/volume-dv2/rangy/DATA/fr_self_order/dev/dat/v1/api-src/fr_self_order.class.php
+    Line: 2960
+post /fr.setuofm.save ส่ง e_status=inactive แล้วมี error
+    Message: Invalid argument supplied for foreach()
+    File: /mnt/volume-dv2/rangy/DATA/fr_self_order/dev/dat/v1/api-src/fr_self_order.class.php
+    Line: 4104

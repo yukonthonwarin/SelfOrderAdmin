@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiserviceService } from './apiservice.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+ 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,15 +22,11 @@ import { SpecialGroupComponent } from './setting/special-group/special-group.com
 import { ReportComponent } from './report/report.component';
 import { ChecklistComponent } from './checklist/checklist.component'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { AddUserComponent } from './setting/user/add-user/add-user.component';
-import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
-import { EditItemComponent } from './setting/item/edit-item/edit-item.component';
-import { AddItemComponent } from './setting/item/add-item/add-item.component';
-import { AddMenuComponent } from './setting/menu/add-menu/add-menu.component';
-import { EditMenuComponent } from './setting/menu/edit-menu/edit-menu.component';
+
+import { HttpClientModule } from '@angular/common/http'; 
 import { RegisterComponent } from './register/register.component';
+import { UofmComponent } from './setting/uofm/uofm.component';
+ 
 
 
 
@@ -48,21 +46,17 @@ import { RegisterComponent } from './register/register.component';
     SpecialComponent,
     SpecialGroupComponent, 
     ReportComponent,
-    ChecklistComponent,
-    AddUserComponent,
-    EditUserComponent,
-    EditItemComponent,
-    AddItemComponent,
-    AddMenuComponent,
-    EditMenuComponent,
-    RegisterComponent
+    ChecklistComponent, 
+    RegisterComponent,
+    UofmComponent, 
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
   ],

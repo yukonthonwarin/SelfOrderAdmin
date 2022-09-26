@@ -1,0 +1,22 @@
+.restautant-img-list{
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.restautant-img-list img{ 
+    height: 200px;
+    width: auto;
+    min-height: 200px;
+    min-width: 200px
+}
+.restautant-img-list .btn{
+    position:absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 1;
+}
+.hidden{
+    display: none;
+}

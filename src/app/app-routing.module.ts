@@ -14,12 +14,9 @@ import { ChecklistComponent } from './checklist/checklist.component';
 import { SpecialComponent } from './setting/special/special.component';
 import { SpecialGroupComponent } from './setting/special-group/special-group.component';
 import { RecommendComponent } from './setting/recommend/recommend.component';
-import { PrinterComponent } from './setting/printer/printer.component';
-import { AddUserComponent } from './setting/user/add-user/add-user.component';
-import { EditUserComponent } from './setting/user/edit-user/edit-user.component';
-import { EditItemComponent } from './setting/item/edit-item/edit-item.component';
-import { AddItemComponent } from './setting/item/add-item/add-item.component';
+import { PrinterComponent } from './setting/printer/printer.component'; 
 import { RegisterComponent } from './register/register.component';
+import { UofmComponent } from './setting/uofm/uofm.component';
 // const routes: Routes = [
 //   {path:"",pathMatch:"full",redirectTo: "login"},
 //   {path:"login",component: LoginComponent},
@@ -48,14 +45,12 @@ const routes: Routes = [
       {path:"menu",component: MenuComponent},
       {path:"item",component: ItemComponent},
       {path:"user",component: UserComponent},
+      {path:"uofm",component: UofmComponent},
       {path:"special",component: SpecialComponent},
       {path:"special-group",component: SpecialGroupComponent},
       {path:"recommend",component: RecommendComponent},
-      {path:"printer",component: PrinterComponent},
-      {path:"adduser",component: AddUserComponent},
-      {path: "edituser",component: EditUserComponent},
-      {path:"additem",component: AddItemComponent},
-      {path:"edititem",component: EditItemComponent},
+      {path:"printer",component: PrinterComponent}, 
+ 
       
     ]
   },

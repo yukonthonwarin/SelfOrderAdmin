@@ -1,84 +1,131 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-      <h2>ตั้งค่า</h2>
-      <h5>หมวดอาหาร</h5>
-    </div>
-    <div class="col-lg-2"></div>
+  <div class="col-lg-10">
+    <h2>ตั้งค่า</h2>
+    <h3>หมวดอาหาร</h3>
   </div>
-  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-    <div class="ibox-content m-b-sm border-bottom">
-      <div class="box_general padding_bottom">
-        <div class="row">
-          <div class="col-sm-4">
-              <h2>หมวดอาหาร</h2>
+ 
+</div>
+
+<div *ngIf="!isEdit">
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+  <div class="ibox-content m-b-sm border-bottom">
+    <div class="box_general padding_bottom">
+      <div class="row">
+        <div class="col-sm-4">
+            <h2>หมวดอาหาร</h2>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-group text-right"> 
+            <button class="btn-primary btn btn-lg" (click)="add()" >
+              <i class="fa fa-plus"> เพิ่ม </i>
+            </button>
           </div>
-          <div class="col-sm-8">
-            <div class="form-group text-right">
-              <button class="btn-primary btn btn-lg" [routerLink]="'/addmenu'">
-                <i class="fa fa-plus">เพิ่ม </i>
-              </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-content">
+          
+          <table class="table table-stripped " > 
+            <thead>
+              <tr >
+                <th class="text-center"> ลำดับ </th>
+                <th  class="text-center">รูป</th>
+                <th> Menu Name <img src="assets/img/flags/16/uk.png"> </th> 
+                <th> ชื่อหมวดอาหาร <img src="assets/img/flags/16/th.png"> </th>  
+                <th class="text-center"> Action </th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let row of dataList" >
+                <td class="text-center">{{row.c_seq }}</td>
+                <td class="text-center">
+                  <img [src]="row.c_media_name" class="table-dataList-img">
+                </td>
+                <td>{{row.lng1_c_name }}</td>
+                <td>{{row.lng2_c_name }}</td>
+                
+                <td class="text-center">
+                  <div class="btn-group">
+                    <!-- <button class="btn-warning btn-outline btn btn-sm btn-80" [routerLink]="'/edititem'"> Edit</button> -->
+                    <button class="btn-warning btn-outline btn btn-sm btn-80" (click)="edit(row)"> แก้ไข</button>
+                    <button class="btn-danger btn-outline btn btn-sm btn-80" (click)="delete(row)">ลบ</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="isEdit">
+
+  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+      <div class="ibox-content m-b-sm border-bottom">
+        <div class="box_general padding_bottom">
+          <h2>{{mode}}หมวดอาหาร</h2>
+        </div>
+
+        <div class="text-center m-b-sm">
+          <img [src]="currentRow.c_media_name || 'assets/img/no-image.jpg' " width="300px"> 
+        </div>
+     
+        <div class="row">  
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>รูปหมวดอาหาร</label>
+              <input type="file" class="form-control" id="myPhoto" name="filename" (change)="onImageChange($event)" accept=".jpg, .gif, .png" />
+           
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ibox">
-          <div class="ibox-content">
-            <table
-              class="footable table table-stripped toggle-arrow-tiny footable-loaded tablet breakpoint"
-              data-page-size="15"
-            >
-              <thead class="thead-color">
-                <tr>
-                  <th
-                    class="footable-visible footable-sortable footable-first-column"
-                  >
-                    รูป<span class="footable-sort-indicator"></span>
-                  </th>
-                  <th
-                    data-hide="phone"
-                    class="footable-visible footable-sortable"
-                  >
-                    หมวดหมู่อาหาร<span class="footable-sort-indicator"></span>
-                  </th>
-                  
-                  <th
-                    class="text-right footable-visible footable-sortable footable-last-column"
-                  >
-                    รายละเอียด<span class="footable-sort-indicator"></span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="tbody">
-                <tr class="footable-even">
-                  <td class="footable-visible footable-first-column">
-                    <span class="footable-toggle"></span>
-                    
-                      <img src="assets/img/omlet.jpg" alt="image" width="200" height="150">
-                      
-                  </td>
-                  <td class="footable-visible">อาหาร</td>
-                  
-                  
-                  <td class="text-right footable-visible footable-last-column">
-                    <div class="btn-group">
-                      <button
-                        class="btn-white btn btn-xs"
-                        [routerLink]="'/editmenu'"
-                      >
-                        Edit
-                      </button>
-                      <button class="btn-white btn btn-xs">Delete</button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <!-- /row-->
+
+      <form [formGroup]="myForm"  validate (submit)="doPost()">
+        <div class="row">
+          <div class="col-md-6 "> 
+            <div class="form-group " [ngClass]="{'has-error  text-danger':myFormControl.lng1_c_name.errors?.required }"> 
+              <label > Menu Name <img src="assets/img/flags/16/uk.png"></label>
+              <input type="text" class="form-control" formControlName="lng1_c_name"    />
+              <span class="form-text text-danger" *ngIf="myFormControl.lng1_c_name.errors?.required">required * </span>
+            </div>
+          </div>
+  
+          <div class="col-md-6 ">
+            <div class="form-group">
+              <label > ชื่อหมวดอาหาร  <img src="assets/img/flags/16/th.png"></label>
+              <input type="text" class="form-control" formControlName="lng2_c_name"  />
+            </div>
           </div>
         </div>
+        <!-- /row-->
+
+        <div class="row"> 
+          <div class="col-md-6 ">
+            <div class="form-group">
+              <label > ลำดับ </label>
+              <input type="text" class="form-control" formControlName="c_seq"  />
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+
+
+    
+        <div class="text-right">
+          <button class="btn btn-danger btn-outline btn-80 btn-lg m-r-sm" type="button" (click)="cancel()">ยกเลิก</button>
+          <button class="btn btn-primary btn-80 btn-lg" type="submit">บันทึก</button> 
+        </div>
+      </form>
+
       </div>
     </div>
-  </div>
-  
+
+</div>

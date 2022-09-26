@@ -2,16 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from 'src/app/apiservice.service';
 
-@Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
-})
-export class TableComponent implements OnInit {
 
-  currentZoneId: any  = '' ;
-  zoneList : any = [];
-  zoneObjList : any = {};
+@Component({
+  selector: 'app-uofm',
+  templateUrl: './uofm.component.html',
+  styleUrls: ['./uofm.component.css']
+})
+export class UofmComponent implements OnInit {
 
   dataList : any;
   isEdit = false;
@@ -24,13 +21,11 @@ export class TableComponent implements OnInit {
       lng1_c_name: ['' , Validators.required],
       lng2_c_name: [''],
       c_seq: ['' ], 
-      e_status: ['active' ], 
-      zone_id: ['', Validators.required ],  
+      e_status: ['active' ],  
     });
   }
 
   ngOnInit(): void {
-    this.doGetZone();
     this.doGet();
   }
 
@@ -46,11 +41,9 @@ export class TableComponent implements OnInit {
       lng2_c_name: '',
       c_seq: '0',
       e_status: 'active', 
-      zone_id : this.zoneList[0].zone_id
     };
     this.currentRow = row;
     this.myForm.setValue(row);
-    console.log(this.zoneList)
   }
 
   edit(row:any){
@@ -62,7 +55,6 @@ export class TableComponent implements OnInit {
       lng2_c_name: row.lng2_c_name,
       c_seq: row.c_seq,
       e_status: row.e_status, 
-      zone_id: row.zone_id, 
     });
 
   }
@@ -75,7 +67,7 @@ export class TableComponent implements OnInit {
     this.api.confirmSwal(header, body, () => {
       // confirm delete
       let payload = this.currentRow;
-      payload.e_status = 'inactive'; 
+      payload.e_status = 'inactive';
       this.save(payload);
     }, () => {
 
@@ -111,21 +103,8 @@ export class TableComponent implements OnInit {
     } 
   }
 
-  async doGetZone(){
-    let mDataArray : any  = await this.api.get("fr.setzone.list").toPromise(); 
-    this.zoneList =  mDataArray.c_data;    
-    for (const key in this.zoneList) {
-      const e = this.zoneList[key];
-      this.zoneObjList[e.zone_id] = e; 
-    }
-  }
-
-  async doGet(){ 
-    let _w = "";
-    if(this.currentZoneId!=undefined && this.currentZoneId!=""){
-      _w = "?zone_id="+this.currentZoneId;
-    }
-    let mDataArray : any  = await this.api.get("fr.settable.list"+_w).toPromise(); 
+  async doGet(){
+    let mDataArray : any  = await this.api.get("fr.setuofm.list").toPromise(); 
     this.dataList =  mDataArray.c_data;
   }
 
@@ -137,8 +116,8 @@ export class TableComponent implements OnInit {
       payload.c_media_name = this.currentRow.c_media_name;
       payload.media_id = this.currentRow.media_id;
 
-      if(this.currentRow.table_id!=undefined)
-        payload.table_id = this.currentRow.table_id;
+      if(this.currentRow.uofm_id!=undefined)
+        payload.uofm_id = this.currentRow.uofm_id;
 
       console.log(payload); 
       this.save(payload);
@@ -148,7 +127,7 @@ export class TableComponent implements OnInit {
   }
 
   async save(payload:any){
-    let result = await this.api.post("fr.settable.save", payload).toPromise();  
+    let result = await this.api.post("fr.setuofm.save", payload).toPromise();  
       console.log(result);
       if(result.success){
          this.api.showSwal('success', 'Save Complete', '');

@@ -8,3 +8,16 @@ body * {
     font-family: 'Prompt-Regular', Prompt;
     
 }
+
+.table-dataList-img{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+}
+
+.btn-80{
+    min-width: 80px;
+}
+.btn-100{
+    min-width: 100px;
+}

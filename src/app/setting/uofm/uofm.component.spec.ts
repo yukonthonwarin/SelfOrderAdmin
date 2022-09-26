@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditMenuComponent } from './edit-menu.component';
+import { UofmComponent } from './uofm.component';
 
-describe('EditMenuComponent', () => {
-  let component: EditMenuComponent;
-  let fixture: ComponentFixture<EditMenuComponent>;
+describe('UofmComponent', () => {
+  let component: UofmComponent;
+  let fixture: ComponentFixture<UofmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditMenuComponent ]
+      declarations: [ UofmComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditMenuComponent);
+    fixture = TestBed.createComponent(UofmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

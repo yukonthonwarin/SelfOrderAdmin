@@ -1521,7 +1521,7 @@ button:focus {
   outline: 0 !important;
 }
 .btn {
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: inherit;
   
 }
@@ -4448,7 +4448,7 @@ samp {
 body {
   
   background-color: #ffffff;
-  font-size: 13px;
+  font-size: 14px;
   color: #676a6c;
   overflow-x: hidden;
   
