@@ -17,6 +17,7 @@ import { RecommendComponent } from './setting/recommend/recommend.component';
 import { PrinterComponent } from './setting/printer/printer.component'; 
 import { RegisterComponent } from './register/register.component';
 import { UofmComponent } from './setting/uofm/uofm.component';
+
 // const routes: Routes = [
 //   {path:"",pathMatch:"full",redirectTo: "login"},
 //   {path:"login",component: LoginComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:"",pathMatch:"full",redirectTo: "login"},
   {path:"login",component: LoginComponent},
   {path:"register",component: RegisterComponent},
+  
   {
     path: '', 
     component: HomeComponent, 
@@ -50,7 +52,7 @@ const routes: Routes = [
       {path:"special-group",component: SpecialGroupComponent},
       {path:"recommend",component: RecommendComponent},
       {path:"printer",component: PrinterComponent}, 
- 
+      
       
     ]
   },

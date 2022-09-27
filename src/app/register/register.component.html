@@ -1,53 +1,86 @@
-<body class="login-bg">
-    <div class="middle-box text-center loginscreen animated fadeInDown">
-      <div>
-        <div>
-          <h1 class="logo-name"></h1>
-        </div>
-        <h3 class="text-left">ลงทะเบียนใช้งาน</h3>
-        <p>
-          <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-        </p>
-        <p class="text-left">SelfOrder</p>
-      
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ชื่อร้านของคุณ"
-              
-            />
-          </div>
-          
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="ชื่อ-นามสกุล"
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="จังหวัด"
-              
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Username"
-              
-            />
-          </div>
-
-          
-        <p class="m-t"><small></small></p>
-        
-      </div>
+<body>
+  <div class="main_box">
+    <input type="checkbox" id="check" />
+    <div class="btn_one">
+      <label for="check">
+        <i class="bx bx-menu"></i>
+      </label>
     </div>
-  </body>
+    <div class="sidebar_menu">
+      <div class="logo">
+        <a href="#">Mungkud.me</a>
+      </div>
+      <div class="btn_two">
+        <label for="check">
+          <i class="bx bx-x"></i>
+        </label>
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <i class="bx bx-grid-alt"></i>
+            <a href="#">ข้อมูล</a>
+          </li>
+          <li>
+            <i class="bx bx-store-alt"></i>
+            <a href="#">ร้านค้าต้นแบบ</a>
+          </li>
+          <li>
+            <i class="bx bx-world"></i>
+            <a href="#">ภาษา</a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="container">
+        <div class="title">ลงทะเบียน</div>
+        <span class="details">Mungkud</span>
+        <div class="content">
+          <form action="#">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">ชื่อร้านอาหารของคุณ</span>
+                <input type="text" placeholder=" " required />
+              </div>
+              <div class="input-box">
+                <span class="details">ชื่อ - นามสกุล</span>
+                <input type="text" placeholder=" " required />
+              </div>
+              <div class="input-box">
+                <span class="details">อีเมล</span>
+                <input placeholder=" " required />
+              </div>
+              <div class="input-box">
+                <span class="details">เบอร์โทรติดต่อ</span>
+                <input type="text" placeholder=" " required />
+              </div>
+              <div class="input-box">
+                <span class="details">ร้านต้นแบบ</span>
+    
+                <select required>
+                  <option></option>
+                  <option>ร้านก๋วยเตี๋ยว</option>
+                  <option>ร้านอาหารตามสั่ง</option>
+                  <option>ร้านอาหารอีสาน</option>
+                  <option>ร้านต้นแบบ5</option>
+                </select>
+              </div>
+            </div>
+            <div class="policy">
+              <input type="checkbox" />
+              <h3>I accept all terms & condition</h3>
+            </div>
+            <div class="button">
+              <input type="submit" value="Register" />
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
   
+
+
+</body>

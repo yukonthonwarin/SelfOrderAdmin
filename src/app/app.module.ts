@@ -26,6 +26,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http'; 
 import { RegisterComponent } from './register/register.component';
 import { UofmComponent } from './setting/uofm/uofm.component';
+
+
+
  
 
 
@@ -48,7 +51,10 @@ import { UofmComponent } from './setting/uofm/uofm.component';
     ReportComponent,
     ChecklistComponent, 
     RegisterComponent,
-    UofmComponent, 
+    UofmComponent,
+    
+    
+     
     
   ],
   imports: [
