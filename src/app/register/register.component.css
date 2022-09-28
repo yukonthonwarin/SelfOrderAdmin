@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px;
+  padding: 80px;
   background: url('src/assets/img/gallery/side.jpg') ;
   background-size: cover;
   
@@ -145,7 +145,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 15px 0 20px 0;
+  margin: 15px -20px 20px -15px;
 }
 form .user-details .input-box{
   margin-bottom: 0px;
@@ -220,6 +220,7 @@ form .input-box span.details{
    cursor: pointer;
    transition: all 0.3s ease;
    background: linear-gradient(135deg, #48c2ad, #108b7b);
+   
  }
  form .button input:hover{
   /* transform: scale(0.99); */
@@ -228,20 +229,24 @@ form .input-box span.details{
  @media(max-width: 584px){
  .container{
   max-width: 100%;
+  
 }
 form .user-details .input-box{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     width: 100%;
+    width: calc(100% / 2 - 15px);
   }
   form .category{
     width: 100%;
   }
   .content form .user-details{
-    max-height: 300px;
+    max-height: 500px;
+    overflow-y: scroll;
 
   }
   .user-details::-webkit-scrollbar{
     width: 5px;
+    
   }
   }
   @media(max-width: 459px){
