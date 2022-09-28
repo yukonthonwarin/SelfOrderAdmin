@@ -15,13 +15,14 @@ import { SpecialGroupComponent } from './setting/special-group/special-group.com
 import { RecommendComponent } from './setting/recommend/recommend.component';
 import { PrinterComponent } from './setting/printer/printer.component'; 
 import { RegisterComponent } from './register/register.component';
-import { UofmComponent } from './setting/uofm/uofm.component';
+import { UofmComponent } from './setting/uofm/uofm.component'; 
 import { BillComponent } from './check/bill/bill.component';
-
+ 
 const routes: Routes = [ 
   {path:"",pathMatch:"full",redirectTo: "login"},
   {path:"login",component: LoginComponent},
   {path:"register",component: RegisterComponent},
+  
   {
     path: '', 
     component: HomeComponent, 
@@ -39,7 +40,7 @@ const routes: Routes = [
       {path:"special-group",component: SpecialGroupComponent},
       {path:"recommend",component: RecommendComponent},
       {path:"printer",component: PrinterComponent},  
-      {path:"bill/:order_hdr_id",component: BillComponent},  
+      {path:"bill/:order_hdr_id",component: BillComponent}, 
     ]
   },
   {path:"**",redirectTo: "/"}

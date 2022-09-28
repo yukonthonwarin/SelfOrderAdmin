@@ -66,7 +66,7 @@ export class MenuComponent implements OnInit {
     this.api.confirmSwal(header, body, () => {
       // confirm delete
       let payload = this.currentRow;
-      payload.e_status = 'inactive';
+      payload.e_status = 'delete';
       this.save(payload);
     }, () => {
 

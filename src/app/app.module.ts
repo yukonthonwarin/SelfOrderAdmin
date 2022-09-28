@@ -47,7 +47,7 @@ import { BillComponent } from './check/bill/bill.component';
     ReportComponent, 
     RegisterComponent,
     UofmComponent,
-    BillComponent,  
+    BillComponent,   
   ],
   imports: [
     BrowserModule,

@@ -3,91 +3,70 @@
     <h2>ตั้งค่า</h2>
     <h5>เครื่องพิมพ์</h5>
   </div>
-  <div class="col-lg-2"></div>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight ecommerce">
-  <div class="ibox-content m-b-sm border-bottom">
-    <div class="box_general padding_bottom">
-      <div class="row">
-        <div class="col-sm-4">
-            <h2>เครื่องพิมพ์</h2>
-        </div>
-        <div class="col-sm-8">
-          <div class="form-group text-right">
-            <button class="btn-primary btn btn-lg" [routerLink]="'/adduser'">
-              <i class="fa fa-plus">เพิ่ม </i>
-            </button>
+<div *ngIf="!isEdit">
+  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="box_general padding_bottom">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>เครื่องพิมพ์</label>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="form-group text-right">
+              <button class="btn-primary btn btn-lg" (click)="add()">
+                <i class="fa fa-plus"> เพิ่ม </i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
     <div class="row">
       <div class="col-lg-12">
         <div class="ibox">
           <div class="ibox-content">
-            <table
-              class="footable table table-stripped toggle-arrow-tiny footable-loaded tablet breakpoint"
-              data-page-size="15"
-            >
-              <thead class="thead-color">
+            <table class="table table-stripped">
+              <thead>
                 <tr>
-                  <th
-                    class="footable-visible footable-sortable footable-first-column"
-                  >
-                    ลำดับ<span class="footable-sort-indicator"></span>
+                  <th class="text-center">ลำดับ</th>
+                  <th class="text-center">
+                    Printer Name <img src="assets/img/flags/16/uk.png" />
                   </th>
-                  <th
-                    data-hide="phone"
-                    class="footable-visible footable-sortable"
-                  >
-                    ชื่อเครื่องพิมพ์(TH)<span class="footable-sort-indicator"></span>
+                  <th class="text-center">
+                    ชื่อเครื่องพิมพ์ <img src="assets/img/flags/16/th.png" />
                   </th>
-                  <th
-                    data-hide="phone"
-                    class="footable-visible footable-sortable"
-                  >
-                  ชื่อเครื่องพิมพ์(EN)<span class="footable-sort-indicator"></span>
-                  </th>
-                  <th
-                    data-hide="phone"
-                    class="footable-visible footable-sortable"
-                  >
-                    SN เครื่องพิมพ์<span class="footable-sort-indicator"></span>
-                  </th>
-                  <th
-                    data-hide="phone"
-                    class="footable-visible footable-sortable"
-                  >
-                  ประเภทเครื่องพิมพ์<span class="footable-sort-indicator"></span>
-                  </th>
-  
-                  
-                  <th
-                    class="text-right footable-visible footable-sortable footable-last-column"
-                  >
-                    รายละเอียด<span class="footable-sort-indicator"></span>
-                  </th>
+                  <th class="text-center">SN เครื่องพิมพ์</th>
+                  <th class="text-center">ประเภทเครื่องพิมพ์</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
-              <tbody class="tbody">
-                <tr class="footable-even">
-                  <td class="footable-visible">1</td>
-                  <td class="footable-visible">ห้องครัว</td>
-                  <td class="footable-visible">Kitchen</td>
-                  <td class="footable-visible">SN116518446</td>
-                  <td class="footable-visible">ห้องครัว</td>
-                  
-                  <td class="text-right footable-visible footable-last-column">
+              <tbody>
+                <tr *ngFor="let row of dataList">
+                  <td class="text-center">{{ row.code_id }}</td>
+                  <td class="text-center">{{ row.c_name_en }}</td>
+                  <td class="text-center">{{ row.c_name }}</td>
+                  <td class="text-center">{{ row.c_desc }}</td>
+                  <td class="text-center">{{ row.c_code }}</td>
+                  <td class="text-center">
                     <div class="btn-group">
+                      <!-- <button class="btn-warning btn-outline btn btn-sm btn-80" [routerLink]="'/edititem'"> Edit</button> -->
                       <button
-                        class="btn-white btn btn-xs"
-                        [routerLink]="'/editprinter'"
+                        class="btn-warning btn-outline btn btn-sm btn-80"
+                        (click)="edit(row)"
                       >
-                        Edit
+                        แก้ไข
                       </button>
-                      <button class="btn-white btn btn-xs">Delete</button>
+                      <button
+                        class="btn-danger btn-outline btn btn-sm btn-80"
+                        (click)="delete(row)"
+                      >
+                        ลบ
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -98,4 +77,123 @@
       </div>
     </div>
   </div>
-  
+</div>
+
+<div *ngIf="isEdit">
+  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="box_general padding_bottom">
+        <h2>{{ mode }}เครื่องพิมพ์</h2>
+      </div>
+      <form [formGroup]="myForm" validate (submit)="doPost()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label> ลำดับ </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="code_id"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div
+              class="form-group"
+              [ngClass]="{
+                'has-error  text-danger': myFormControl.c_name.errors?.required
+              }"
+            >
+              <label> Menu Name <img src="assets/img/flags/16/uk.png" /></label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="c_name_en"
+              />
+              <span
+                class="form-text text-danger"
+                *ngIf="myFormControl.c_name_en.errors?.required"
+                >required *
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>
+                ชื่อเครื่องพิมพ์ <img src="assets/img/flags/16/th.png"
+              /></label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="c_name"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div
+              class="form-group"
+              [ngClass]="{
+                'has-error  text-danger': myFormControl.c_desc.errors?.required
+              }"
+            >
+              <label> SN เครื่องพิมพ์</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="c_desc"
+              />
+              <span
+                class="form-text text-danger"
+                *ngIf="myFormControl.c_desc.errors?.required"
+                >required *
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div
+              class="form-group"
+              [ngClass]="{
+                'has-error  text-danger': myFormControl.c_code.errors?.required
+              }"
+            >
+              <label>ประเภทเครื่องพิมพ์</label>
+              <select class="form-control" formControlName="c_code">
+                <option *ngFor="let menu of menuList" [ngValue]="menu.c_code">
+                  {{ menu.c_code }}
+                </option>
+              </select>
+              <span
+                class="form-text text-danger"
+                *ngIf="myFormControl.c_code.errors?.required"
+                >required *
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- /row-->
+
+        <div class="text-right">
+          <button
+            class="btn btn-danger btn-outline btn-80 btn-lg m-r-sm"
+            type="button"
+            (click)="cancel()"
+          >
+            ยกเลิก
+          </button>
+          <button class="btn btn-primary btn-80 btn-lg" type="submit" >
+            บันทึก
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
