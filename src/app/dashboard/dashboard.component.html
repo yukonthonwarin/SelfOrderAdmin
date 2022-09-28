@@ -5,10 +5,207 @@
     <div class="col-lg-2"></div>
 </div>
 <div class="wrapper wrapper-content">
-   <div>lng1_c_name : {{restaurantInfo.lng1_c_name  }}</div>
-   <div>lng2_c_name : {{restaurantInfo.lng2_c_name  }}</div>
-   <div>c_code : {{restaurantInfo.c_code  }}</div>
-   <div><img [src]="restaurantInfo.c_media_name" width="300px"></div>
+   <button class="btn" (click)="doGet()">load</button>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h2>ยอดเงินรวม : <b>{{ data.sum_item_price.total }}</b> </h2> 
+            <div class="ibox-tools">
+                <span class="label label-success float-right">วันนี้</span>
+            </div> 
+        </div>  
+        <div class="ibox-content">
+          <div class="row text-center">
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price.food }}</h3>
+                  <div class="stats-label">อาหาร</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price.bevarage }}</h3>
+                  <div class="stats-label">เครื่องดื่ม</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price.other }}</h3>
+                  <div class="stats-label">อื่นๆ</div>
+              </div>
+          </div>
+        </div>
+      </div> 
+      <!-- ibox -->
+    </div>  
+    <div class="col-md-4">
+      <div class="ibox ">
+        <div class="ibox-title">
+            <h2 >ยอดเงินรวม : <b>{{ data.sum_paytype.total }}</b> </h2> 
+            <div class="ibox-tools">
+                <span class="label label-success float-right">วันนี้</span>
+            </div> 
+        </div>  
+        <div class="ibox-content">
+          <div class="row text-center">
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype.cash }}</h3>
+                  <div class="stats-label">เงินสด</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype.qrcode_cash }}</h3>
+                  <div class="stats-label">QR Pay</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype.credit }}</h3>
+                  <div class="stats-label">เครดิต</div>
+              </div>
+          </div>
+        </div>
+      </div> 
+      <!-- ibox -->
+    </div>
+    <div class="col-md-4">
+      <div class="ibox ">
+        <div class="ibox-title">
+            <h2 >จำนวนรายการขาย :  <b>{{ data.count_item.total }}</b> </h2> 
+            <div class="ibox-tools">
+                <span class="label label-success float-right">วันนี้</span>
+            </div> 
+        </div>  
+        <div class="ibox-content">
+          <div class="row text-center">
+              <div class="col-4"> 
+                  <h3>{{ data.count_item.food }}</h3>
+                  <div class="stats-label">อาหาร</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.count_item.bevarage }}</h3>
+                  <div class="stats-label">เครื่องดื่ม</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.count_item.other }}</h3>
+                  <div class="stats-label">อื่นๆ</div>
+              </div>
+          </div>
+        </div>
+      </div> 
+      <!-- ibox -->
+    </div>
+  </div>
+  <!-- row -->
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="ibox ">
+        <div class="ibox-title">
+            <h2 >ยอดขายต่อสัปดาห์</h2> 
+            <div class="ibox-tools">
+                <span class="float-right"><b>ยอดรวมทั้งสัปดาห์</b></span>
+            </div> 
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-md-9">
+              <canvas id="myChart" height="180"></canvas>
+            </div>
+            <div class="col-md-3">
+
+              <div style="    height: 400px; padding-top: 130px;">
+                <h3 class="m-t-lg" >{{total_week1   }}</h3> 
+                <small>ยอดเงินวันของสัปดาห์ปัจจุบัน</small>
+                <br>
+                <br>
+                <h3 >{{total_week2}}</h3> 
+                <small>ยอดเงินวันของสัปดาห์ที่ผ่านมา</small>
+              </div>
+
+              
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+      </div> 
+      <!-- ibox -->
+
+    </div>  
+    <div class="col-md-4">
+
+      <div class="ibox ">
+        <div class="ibox-title">
+            <h3 class="no-margins">สรุปรายละเอียด/สัปดาห์</h3> 
+            <div class="ibox-tools">
+                <span class="label label-warning float-right">สัปดาห์</span>
+            </div> 
+        </div> 
    
+        <div class="ibox-content">
+          <div class="row"> 
+            <div class="col-6"> <h2>ยอดเงินรวม </h2></div>
+            <div class="col-6 text-right"><h2><b>{{ data.sum_item_price_7.total }}</b></h2> </div>
+          </div>
+          <br>
+          <div class="row text-center"> 
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price_7.food }}</h3>
+                  <div class="stats-label">อาหาร</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price_7.bevarage }}</h3>
+                  <div class="stats-label">เครื่องดื่ม</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.sum_item_price_7.other }}</h3>
+                  <div class="stats-label">อื่นๆ</div>
+              </div>
+          </div>
+        </div>
+ 
+        <div class="ibox-content">
+          <div class="row"> 
+            <div class="col-6"> <h2>ยอดเงินรวม </h2></div>
+            <div class="col-6 text-right"><h2><b>{{ data.sum_paytype_7.total }}</b></h2> </div>
+          </div>
+          <br>
+          <div class="row text-center">
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype_7.cash }}</h3>
+                  <div class="stats-label">เงินสด</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype_7.qrcode_cash }}</h3>
+                  <div class="stats-label">QR Pay</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.sum_paytype_7.credit }}</h3>
+                  <div class="stats-label">เครดิต</div>
+              </div>
+          </div>
+        </div>
+
+        <div class="ibox-content">
+          <div class="row"> 
+            <div class="col-6"> <h2>จำนวนรายการขาย </h2></div>
+            <div class="col-6 text-right"><h2 ><b>{{ data.count_item_7.total }}</b></h2> </div>
+          </div>
+          <br>
+          <div class="row text-center">
+              <div class="col-4"> 
+                  <h3>{{ data.count_item_7.food }}</h3>
+                  <div class="stats-label">อาหาร</div>
+              </div> 
+              <div class="col-4"> 
+                  <h3>{{ data.count_item_7.bevarage }}</h3>
+                  <div class="stats-label">เครื่องดื่ม</div>
+              </div>
+              <div class="col-4"> 
+                  <h3>{{ data.count_item_7.other }}</h3>
+                  <div class="stats-label">อื่นๆ</div>
+              </div>
+          </div>
+        </div>
+      </div> 
+      <!-- ibox -->
+    </div> 
+  </div>
+  <!-- row -->
 
 </div>

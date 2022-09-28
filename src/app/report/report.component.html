@@ -6,4 +6,70 @@
 </div>
 <div class="wrapper wrapper-content">
     
+  <div class="ibox-content m-b-sm border-bottom">
+    <div class="box_general padding_bottom">
+      <div class="row">
+        <div class="col-md-3">  
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>รายงาน</label>
+            <select   class="form-control" [(ngModel)]="currentReport" (change)="doGet()">
+                <option value="รายงานสิ้นวันผู้จัดการ">รายงานสิ้นวันผู้จัดการ</option>
+                <option value="รายงานสรุปใบเสร็จ">รายงานสรุปใบเสร็จ</option>
+                <option value="รายงานสรุปการขายสินค้า">รายงานสรุปการขายสินค้า</option>
+                <option value="รายงานวิเคราะห์รายได้ (รายเดือน) ">รายงานวิเคราะห์รายได้ (รายเดือน) </option>
+            </select> 
+          </div>
+          <div class=" text-center">
+
+          </div>
+          
+        </div>
+        <div class="col-md-3">  </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-3">  </div>
+        <div class="col-md-3">
+           
+            <div class="form-group">
+              <label>เริ่มต้น</label> 
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="d_start" ngbDatepicker #d1="ngbDatepicker">
+                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                  <i class="fa fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+          
+        </div> 
+        <div class="col-md-3">
+
+            <div class="form-group">
+              <label>สิ้นสุด</label> 
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="d_end" ngbDatepicker #d2="ngbDatepicker">
+                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                  <i class="fa fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+             
+        </div> 
+        <div class="col-md-3">  </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-primary btn-100 ">เรียกดูข้อมูล</button>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+
 </div>

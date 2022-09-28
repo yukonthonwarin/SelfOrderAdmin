@@ -50,10 +50,16 @@
           </li>
 
           <li>
-            <a [routerLink]="'/checklist'"  >
+            <a (click)="isCollapsedCheck=!isCollapsedCheck" >
               <i class="fa fa-folder-open"></i>
               <span class="nav-label">ตรวจสอบรายการ</span>
+              <span class="fa arrow"></span>
             </a>
+            <ul class="nav nav-second-level collapse" [ngClass]="{'show': isCollapsedCheck}" >
+              <li><a >ชำระเงิน</a></li>
+              <li><a >โต้ะรอการชำระเงิน</a></li>
+              <li><a [routerLink]="'/bill/0'">เรียกเก็บเงิน</a></li>
+            </ul>
           </li>
  
           <li>
@@ -99,12 +105,7 @@
             </a>
           </div>
           <ul class="nav navbar-top-links navbar-right">
-            <li style="padding: 20px">
-              <span class="m-r-sm text-muted welcome-message"
-                >Welcome to SelfOrderAdmin</span
-              >
-            </li>
-
+            
             <li class="dropdown">
               <a
                 class="dropdown-toggle count-info"
@@ -112,42 +113,23 @@
                 href="#"
               >
                 <i class="fa fa-bell"></i>
-                <span class="label label-primary">8</span>
+                <span class="label label-danger" *ngIf="notiList.length>0">{{notiList.length}}</span>
               </a>
               <ul class="dropdown-menu dropdown-alerts">
-                <li>
-                  <a href="mailbox.html" class="dropdown-item">
+           
+                <li *ngFor="let row of notiList" >
+                  <a [routerLink]="['/bill', row.hdr.order_hdr_id]" class="dropdown-item" style="border-bottom:1px solid #ccc;"> 
                     <div>
-                      <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                      <span class="float-right text-muted small"
-                        >4 minutes ago</span
-                      >
+                      <i class="fa fa-file-o"></i> บิลเรียกเก็บเงินเลขที่ {{row.hdr.c_hdr_data.c_print_bill_no }}
+                      <!-- <span class="float-right text-muted small">4 minutes ago</span> -->
+                    </div>
+                    <div>
+                       เลขโต๊ะ  {{row.hdr.c_hdr_data.print_bill_user_name }} 
                     </div>
                   </a>
                 </li>
-                <li class="dropdown-divider"></li>
-                <li>
-                  <a href="profile.html" class="dropdown-item">
-                    <div>
-                      <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                      <span class="float-right text-muted small"
-                        >12 minutes ago</span
-                      >
-                    </div>
-                  </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li>
-                  <a href="grid_options.html" class="dropdown-item">
-                    <div>
-                      <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                      <span class="float-right text-muted small"
-                        >4 minutes ago</span
-                      >
-                    </div>
-                  </a>
-                </li>
-                <li class="dropdown-divider"></li>
+             
+
                 <li>
                   <div class="text-center link-block">
                     <a href="notifications.html" class="dropdown-item">
@@ -160,7 +142,7 @@
             </li>
 
             <li>
-              <a href="login"> <i class="fa fa-sign-out"></i> Log out </a>
+              <a [routerLink]="'/login'"> <i class="fa fa-sign-out"></i> Log out </a>
             </li>
           </ul>
         </nav>

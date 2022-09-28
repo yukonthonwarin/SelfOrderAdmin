@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChecklistComponent } from './checklist.component';
+import { BillComponent } from './bill.component';
 
-describe('ChecklistComponent', () => {
-  let component: ChecklistComponent;
-  let fixture: ComponentFixture<ChecklistComponent>;
+describe('BillComponent', () => {
+  let component: BillComponent;
+  let fixture: ComponentFixture<BillComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChecklistComponent ]
+      declarations: [ BillComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChecklistComponent);
+    fixture = TestBed.createComponent(BillComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

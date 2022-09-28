@@ -972,7 +972,7 @@ h5 {
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
-  width: 310px;
+  width: 400px;
   min-width: 0;
 }
 .navbar-top-links .dropdown-messages {
@@ -994,14 +994,14 @@ h5 {
 }
 .dropdown-messages li a,
 .dropdown-alerts li a {
-  font-size: 12px;
+  font-size: 14px;
 }
 .dropdown-messages li em,
 .dropdown-alerts li em {
-  font-size: 10px;
+  font-size: 14px;
 }
 .nav.navbar-top-links .dropdown-alerts a {
-  font-size: 12px;
+  font-size: 14px;
 }
 .nav-header {
   padding: 30px 25px;
@@ -9487,7 +9487,7 @@ body.md-skin {
 }
 .md-skin .ibox-title,
 .md-skin .ibox-content {
-  border-style: none;
+  /* border-style: none; */
 }
 .md-skin .ibox-title h5 {
   font-size: 16px;
