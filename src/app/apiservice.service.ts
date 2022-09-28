@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
  
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';  
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'; 
 
 @Injectable({
   providedIn: 'root'

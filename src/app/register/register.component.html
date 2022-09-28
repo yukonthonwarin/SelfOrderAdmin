@@ -6,12 +6,12 @@
 <body>
   <div class="main_box">
     <input type="checkbox" id="check" />
-    <div class="btn_one">
+    <!-- <div class="btn_one">
       <label for="check">
         <i class="bx bx-menu"></i>
       </label>
-    </div>
-    <div class="sidebar_menu">
+    </div> -->
+    <!-- <div class="sidebar_menu">
       <div class="logo">
         <a href="#">Mungkud.me</a>
       </div>
@@ -36,50 +36,132 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div class="container">
-      <div class="title">ลงทะเบียน</div>
-      <span class="details">Mungkud</span>
-      <div class="content">
-        <form action="#">
-          <div class="user-details">
-            <div class="input-box">
-              <span class="details">ชื่อร้านอาหารของคุณ</span>
-              <input type="text" placeholder=" " required />
-            </div>
-            <div class="input-box">
-              <span class="details">ชื่อ - นามสกุล</span>
-              <input type="text" placeholder=" " required />
-            </div>
-            <div class="input-box">
-              <span class="details">อีเมล</span>
-              <input placeholder=" " required />
-            </div>
-            <div class="input-box">
-              <span class="details">เบอร์โทรติดต่อ</span>
-              <input type="text" placeholder=" " required />
-            </div>
-            <div class="input-box">
-              <span class="details">ร้านต้นแบบ</span>
+    </div> -->
+    <div class="container animated fadeInRight"  *ngIf="!isEdit">
+       
+        <div class="title">ลงทะเบียน</div>
+        <span class="details">Mungkud</span>
+        <div class="content">
+          <form [formGroup]="myForm"  validate (submit)="doPost()">
+            <div class="user-details">
 
-              <select required>
-                <option></option>
-                <option>ร้านก๋วยเตี๋ยว</option>
-                <option>ร้านอาหารตามสั่ง</option>
-                <option>ร้านอาหารอีสาน</option>
-                <option>ร้านต้นแบบ5</option>
-              </select>
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_name.errors?.required }">
+                <span class="details">ชื่อร้านอาหารของคุณ <span class="text-danger" *ngIf="myFormControl.company_c_name.errors?.required"> * </span> </span> 
+                <input type="text" formControlName="company_c_name"   /> 
+              </div>
+
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_contact.errors?.required }">
+                <span class="details">ชื่อ - นามสกุล <span class="text-danger" *ngIf="myFormControl.company_c_contact.errors?.required"> * </span></span>
+                <input type="text" formControlName="company_c_contact"  /> 
+              </div>
+              
+
+              <div class="input-box">
+                <span class="details">จังหวัด</span> 
+                <select   class="form-control" formControlName="company_province_id"  (change)="doGetDistrict($event)"> 
+                  <option *ngFor="let province of provinceList" [value]="province.province_id">{{ province.c_province_th }}</option>
+                </select>  
+              </div>
+
+              <div class="input-box">
+                <span class="details">เขต/อำเภอ</span>
+                <select   class="form-control" formControlName="company_district_id"  (change)="doGeTambon($event)"> 
+                  <option *ngFor="let district of districtList" [value]="district.district_id">{{ district.c_district_th }}</option>
+                </select> 
+              </div>
+
+              <div class="input-box">
+                <span class="details">อีเมล</span>
+                <input type="email" formControlName="company_c_contact_email"  />
+              </div>
+
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_contact_phone_no.errors?.required }">
+                <span class="details">เบอร์โทรติดต่อ <span class="text-danger" *ngIf="myFormControl.company_c_contact_phone_no.errors?.required"> * </span> </span>
+                <input type="text" formControlName="company_c_contact_phone_no" /> 
+              </div>
+
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_template_id.errors?.required }">
+                <span class="details">ร้านต้นแบบ <span class="text-danger" *ngIf="myFormControl.company_template_id.errors?.required"> * </span></span> 
+                <select formControlName="company_template_id"  >
+                  <option *ngFor="let template of templateList" [ngValue]="template.company_template_id">{{template.lng1_c_name}}</option> 
+                </select>
+              </div>
+
+              <div class="input-box">
+                <br>
+                <a (click)="view(myFormControl.company_template_id.value)">แสดงตัวอย่างรายการอาหาร</a>
+              </div>
             </div>
-          </div>
-          <div class="policy">
-            <input type="checkbox" />
-            <h3>I accept all terms & condition</h3>
-          </div>
-          <div class="button">
-            <input type="submit" value="Register" />
-          </div>
-        </form>
-      </div>
+
+            <!-- <div class="policy">
+              <input type="checkbox" formControlName="agreement" />
+              <h3>I accept all terms & condition  {{ }}</h3>
+            </div> -->
+
+            <div class="button">
+              <button type="submit" class="btn btn-primary btn-block" style=" padding: 10px; font-size: 1.5em;"  >  Register</button>
+            </div>
+
+            <div class="text-center">
+              <a  [routerLink]="'/login'" >Back</a>
+            </div> 
+
+          </form>
+        </div>
+      
+      
+
     </div>
+    <div class="container animated fadeInRight"  *ngIf="isEdit">
+
+      
+        <div class="title">{{currentTemplate.lng1_c_name }}</div>
+        <span class="details">ร้านต้นแบบ</span>
+        <hr>
+        <div class="content"> 
+          <br>
+
+          <div class="form-group">
+            <label>หมวดหมู่อาหาร</label>
+            <select   class="form-control"  >
+              <option value="">แสดงทั้งหมด</option>
+              <option *ngFor="let menu of currentTemplate.setmenu" [value]="menu.menu_id">{{ menu.lng1_menu_c_name }}</option>
+            </select>
+          </div> 
+          <br>
+ 
+          <table class="table table-stripped " > 
+            <thead>
+              <tr > 
+                <th class="text-center"> หมวดหมู่อาหาร </th>
+                <th>ชื่อรายการอาหาร </th>  
+                <th class="text-right"> ราคา </th>
+            
+              </tr>
+            </thead>
+            <tbody > 
+              <tr *ngFor="let row of currentTemplate.setitem" > 
+                <td class="text-center"> 
+                  {{ row.lng1_menu_c_name }}
+                </td>
+                <td>{{row.lng1_item_c_name }}</td> 
+                <td class="text-right">{{row.f_price | number : '1.2-2' }}</td> 
+              </tr>
+            </tbody>
+          </table>
+
+          <hr>
+          <br>
+          <div class="text-center">
+            
+            <a (click)="cancel()" >Back</a>
+          </div> 
+
+        </div>
+
+         
+    </div>
+
+    
   </div>
 </body>

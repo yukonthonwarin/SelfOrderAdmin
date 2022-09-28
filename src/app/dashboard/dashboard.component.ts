@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from '../apiservice.service';
-import {CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './dashboard.component.html', 
+  styleUrls: ['./dashboard.component.css'],
+  providers : [DecimalPipe]
 })
 export class DashboardComponent implements OnInit {
  

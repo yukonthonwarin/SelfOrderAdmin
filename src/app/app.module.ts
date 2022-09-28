@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiserviceService } from './apiservice.service';
-import {CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
- 
+import { CommonModule, DecimalPipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { HttpClientModule } from '@angular/common/http'; 
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component'; 
@@ -19,21 +21,28 @@ import { ZoneComponent } from './setting/zone/zone.component';
 import { SpecialComponent } from './setting/special/special.component';
 import { SpecialGroupComponent } from './setting/special-group/special-group.component'; 
 import { ReportComponent } from './report/report.component'; 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { HttpClientModule } from '@angular/common/http'; 
 import { RegisterComponent } from './register/register.component';
 import { UofmComponent } from './setting/uofm/uofm.component';
 import { BillComponent } from './check/bill/bill.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
  
 
-
-
 @NgModule({
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule,     
+  ], 
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent, 
+    DashboardComponent,
     RestaurantComponent,
     TableComponent,
     PrinterComponent,
@@ -47,18 +56,12 @@ import { BillComponent } from './check/bill/bill.component';
     ReportComponent, 
     RegisterComponent,
     UofmComponent,
-    BillComponent,   
+    BillComponent,    
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule, 
-    ReactiveFormsModule,
-    HttpClientModule,
-    CommonModule,    
-  ],
-  providers: [ApiserviceService],
+  
+  exports : [ ],
+  providers: [ApiserviceService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 
