@@ -24,14 +24,15 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private api: ApiserviceService, private formBuilder: FormBuilder) {
 
     this.myForm = this.formBuilder.group({
-      company_c_name: ['' , Validators.required],
-      company_c_contact: ['', Validators.required],
-      company_c_contact_phone_no: ['', Validators.required],
-      company_c_contact_email: [''],
+      lng1_c_name: ['' , Validators.required],
+      c_contact: ['', Validators.required],
+      c_contact_phone_no: ['', Validators.required],
+      c_contact_email: [''],
       company_template_id: ['', Validators.required], 
       company_province_id: [''],
       company_district_id: [''], 
     });
+  
  
     this.doGet();
     this.doGetProvince()

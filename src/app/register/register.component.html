@@ -45,14 +45,14 @@
           <form [formGroup]="myForm"  validate (submit)="doPost()">
             <div class="user-details">
 
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_name.errors?.required }">
-                <span class="details">ชื่อร้านอาหารของคุณ <span class="text-danger" *ngIf="myFormControl.company_c_name.errors?.required"> * </span> </span> 
-                <input type="text" formControlName="company_c_name"   /> 
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.lng1_c_name.errors?.required }">
+                <span class="details">ชื่อร้านอาหารของคุณ <span class="text-danger" *ngIf="myFormControl.lng1_c_name.errors?.required"> * </span> </span> 
+                <input type="text" formControlName="lng1_c_name"   /> 
               </div>
 
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_contact.errors?.required }">
-                <span class="details">ชื่อ - นามสกุล <span class="text-danger" *ngIf="myFormControl.company_c_contact.errors?.required"> * </span></span>
-                <input type="text" formControlName="company_c_contact"  /> 
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.c_contact.errors?.required }">
+                <span class="details">ชื่อ - นามสกุล <span class="text-danger" *ngIf="myFormControl.c_contact.errors?.required"> * </span></span>
+                <input type="text" formControlName="c_contact"  /> 
               </div>
               
 
@@ -72,12 +72,12 @@
 
               <div class="input-box">
                 <span class="details">อีเมล</span>
-                <input type="email" formControlName="company_c_contact_email"  />
+                <input type="email" formControlName="c_contact_email"  />
               </div>
 
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_c_contact_phone_no.errors?.required }">
-                <span class="details">เบอร์โทรติดต่อ <span class="text-danger" *ngIf="myFormControl.company_c_contact_phone_no.errors?.required"> * </span> </span>
-                <input type="text" formControlName="company_c_contact_phone_no" /> 
+              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.c_contact_phone_no.errors?.required }">
+                <span class="details">เบอร์โทรติดต่อ <span class="text-danger" *ngIf="myFormControl.c_contact_phone_no.errors?.required"> * </span> </span>
+                <input type="text" formControlName="c_contact_phone_no" /> 
               </div>
 
               <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_template_id.errors?.required }">
