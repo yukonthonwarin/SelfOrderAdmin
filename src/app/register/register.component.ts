@@ -33,12 +33,12 @@ export class RegisterComponent implements OnInit {
       company_district_id: [''], 
     });
  
-
+    this.doGet();
+    this.doGetProvince()
   }
 
   ngOnInit(): void {
-    this.doGet();
-    this.doGetProvince()
+    
   }
 
   get myFormControl() {
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async doGet(){
-    let mDataArray : any  = await this.api.get("restaurant.template").toPromise(); 
+    let mDataArray : any  = await this.api.getRestaurantTemplate().toPromise(); 
     this.templateList =  mDataArray.c_data;
   }
 
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
       console.log(payload); 
 
       // POST /restaurant.register
-      let result = await this.api.post("restaurant.register", payload).toPromise();  
+      let result = await this.api.createRestaurant(payload).toPromise();  
       if(result.success){ 
 
         Swal.fire({

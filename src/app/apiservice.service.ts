@@ -155,6 +155,15 @@ export class ApiserviceService {
     return this.http.post<any>(environment.baseURL+'company.register', payload , { headers: _headers } );
   }
 
+  getRestaurantTemplate(){
+    return this.http.get<any[]>( environment.baseURL+ "restaurant.template" );
+  }
+
+  createRestaurant(payload : any) {
+    let _headers = new HttpHeaders({}); 
+    return this.http.post<any>(environment.baseURL+'restaurant.register', payload );
+  }
+
    
   
   

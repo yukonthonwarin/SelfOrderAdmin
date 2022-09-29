@@ -10,14 +10,18 @@ import { ApiserviceService } from '../apiservice.service';
 })
 export class LoginComponent implements OnInit {
   
-  c_username : string = 'user@1002';
-  c_password : string = 'fr-123456';
-  restaurantInfo : any;
+  c_username : string ='';
+  c_password : string ='';
+  restaurantInfo : any = {c_media_name:'', lng1_c_name:'', lng2_c_name:''};
   constructor(private router: Router, private api: ApiserviceService) { 
  
   }
 
   ngOnInit(): void { 
+    this.c_username   = 'user@1002';
+    this.c_password  = 'fr-123456';
+
+    if(localStorage.uuid!==undefined)
     this.getRestaurantInfo();
   }
 
