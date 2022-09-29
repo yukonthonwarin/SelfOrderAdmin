@@ -88,6 +88,7 @@ export class RegisterComponent implements OnInit {
     if(this.myForm.valid){ 
       console.log(payload); 
 
+      // POST /restaurant.register
       let result = await this.api.post("restaurant.register", payload).toPromise();  
       if(result.success){ 
 
