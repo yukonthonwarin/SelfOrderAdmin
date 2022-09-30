@@ -127,6 +127,9 @@ export class RestaurantComponent implements OnInit {
   }
 
   addImgList(obj : any){
+    if(this.restaurantInfo.c_setting.c_media_data==undefined){
+      this.restaurantInfo.c_setting.c_media_data = [];
+    } 
     this.restaurantInfo.c_setting.c_media_data.push(obj);
   }
 

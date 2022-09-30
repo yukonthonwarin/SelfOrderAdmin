@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
  
   isEdit : any = false;
   currentTemplate : any;
+  currentMenuId : any;
+  setitem : any = [];
 
    
   constructor(private router: Router, private api: ApiserviceService, private formBuilder: FormBuilder) {
@@ -46,7 +48,24 @@ export class RegisterComponent implements OnInit {
     return this.myForm.controls;
   }
 
+  selectMenu(){
+    console.log(this.currentMenuId );
+    this.setitem = [];
+    if(this.currentMenuId==''){
+      this.setitem = this.currentTemplate.setitem;
+      return;
+    }
+    for (const key in this.currentTemplate.setitem) {
+      const element = this.currentTemplate.setitem[key];
+      if(element.menu_id==this.currentMenuId){
+        this.setitem.push(element);
+      }
+    }
+  }
+
   view(company_template_id:any){
+    this.currentMenuId = '';
+    this.setitem = [];
     console.log(company_template_id)
     if(company_template_id==null || company_template_id==undefined || company_template_id=='') return;
     this.isEdit = true;
@@ -57,6 +76,7 @@ export class RegisterComponent implements OnInit {
       }
     }
     console.log(this.currentTemplate)
+    this.setitem = this.currentTemplate.setitem;
   }
 
   cancel(){

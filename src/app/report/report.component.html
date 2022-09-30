@@ -14,11 +14,8 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>รายงาน</label>
-            <select   class="form-control" [(ngModel)]="currentReport" (change)="doGet()">
-                <option value="รายงานสิ้นวันผู้จัดการ">รายงานสิ้นวันผู้จัดการ</option>
-                <option value="รายงานสรุปใบเสร็จ">รายงานสรุปใบเสร็จ</option>
-                <option value="รายงานสรุปการขายสินค้า">รายงานสรุปการขายสินค้า</option>
-                <option value="รายงานวิเคราะห์รายได้ (รายเดือน) ">รายงานวิเคราะห์รายได้ (รายเดือน) </option>
+            <select   class="form-control" [(ngModel)]="currentReport" >
+                <option *ngFor="let report of reportList" [ngValue]="report">{{ report.lng1_c_name }}</option> 
             </select> 
           </div>
           <div class=" text-center">
@@ -31,9 +28,8 @@
       
       <div class="row">
         <div class="col-md-3">  </div>
-        <div class="col-md-3">
-           
-            <div class="form-group">
+        <div class="col-md-3"> 
+            <div class="form-group" *ngIf="currentReport.c_type.includes('DateStart')">
               <label>เริ่มต้น</label> 
               <div class="input-group">
                 <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="d_start" ngbDatepicker #d1="ngbDatepicker">
@@ -46,7 +42,7 @@
         </div> 
         <div class="col-md-3">
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="currentReport.c_type.includes('DateEnd')">
               <label>สิ้นสุด</label> 
               <div class="input-group">
                 <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="d_end" ngbDatepicker #d2="ngbDatepicker">
@@ -63,13 +59,11 @@
       <br>
       <div class="row">
         <div class="col-md-12 text-center">
-          <button class="btn btn-primary btn-100 ">เรียกดูข้อมูล</button>
+          <button class="btn btn-primary btn-100 " (click)="export( )" >เรียกดูข้อมูล</button>
         </div>
-      </div>
-
-      
-
+      </div> 
     </div>
   </div>
 
 </div>
+ 

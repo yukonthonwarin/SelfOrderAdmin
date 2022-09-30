@@ -152,7 +152,7 @@ export class ApiserviceService {
       'uuid': localStorage.uuid,
       'token': localStorage.token,
     });  
-    return this.http.post<any>(environment.baseURL+'company.register', payload , { headers: _headers } );
+    return this.http.post<any>(environment.baseURL+'restaurant.save', payload , { headers: _headers } );
   }
 
   getRestaurantTemplate(){

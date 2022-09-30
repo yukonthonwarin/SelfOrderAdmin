@@ -43,55 +43,80 @@
         <span class="details">Mungkud</span>
         <div class="content">
           <form [formGroup]="myForm"  validate (submit)="doPost()">
-            <div class="user-details">
 
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.lng1_c_name.errors?.required }">
-                <span class="details">ชื่อร้านอาหารของคุณ <span class="text-danger" *ngIf="myFormControl.lng1_c_name.errors?.required"> * </span> </span> 
-                <input type="text" formControlName="lng1_c_name"   /> 
+            <div class="row"> 
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group" [ngClass]="{'has-error  text-danger':myFormControl.lng1_c_name.errors?.required }">
+                  <label >ชื่อร้านอาหารของคุณ <span class="text-danger" *ngIf="myFormControl.lng1_c_name.errors?.required"> * </span> </label> 
+                  <input type="text" formControlName="lng1_c_name" class="form-control"   /> 
+                </div>
               </div>
 
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.c_contact.errors?.required }">
-                <span class="details">ชื่อ - นามสกุล <span class="text-danger" *ngIf="myFormControl.c_contact.errors?.required"> * </span></span>
-                <input type="text" formControlName="c_contact"  /> 
-              </div>
-              
-
-              <div class="input-box">
-                <span class="details">จังหวัด</span> 
-                <select   class="form-control" formControlName="company_province_id"  (change)="doGetDistrict($event)"> 
-                  <option *ngFor="let province of provinceList" [value]="province.province_id">{{ province.c_province_th }}</option>
-                </select>  
-              </div>
-
-              <div class="input-box">
-                <span class="details">เขต/อำเภอ</span>
-                <select   class="form-control" formControlName="company_district_id"  (change)="doGeTambon($event)"> 
-                  <option *ngFor="let district of districtList" [value]="district.district_id">{{ district.c_district_th }}</option>
-                </select> 
-              </div>
-
-              <div class="input-box">
-                <span class="details">อีเมล</span>
-                <input type="email" formControlName="c_contact_email"  />
-              </div>
-
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.c_contact_phone_no.errors?.required }">
-                <span class="details">เบอร์โทรติดต่อ <span class="text-danger" *ngIf="myFormControl.c_contact_phone_no.errors?.required"> * </span> </span>
-                <input type="text" formControlName="c_contact_phone_no" /> 
-              </div>
-
-              <div class="input-box" [ngClass]="{'has-error  text-danger':myFormControl.company_template_id.errors?.required }">
-                <span class="details">ร้านต้นแบบ <span class="text-danger" *ngIf="myFormControl.company_template_id.errors?.required"> * </span></span> 
-                <select formControlName="company_template_id"  >
-                  <option *ngFor="let template of templateList" [ngValue]="template.company_template_id">{{template.lng1_c_name}}</option> 
-                </select>
-              </div>
-
-              <div class="input-box">
-                <br>
-                <a (click)="view(myFormControl.company_template_id.value)">แสดงตัวอย่างรายการอาหาร</a>
+              <div class="col-md-6 col-sm-12 "> 
+                <div class="form-group" [ngClass]="{'has-error  text-danger':myFormControl.c_contact.errors?.required }">
+                  <label >ชื่อ - นามสกุล <span class="text-danger" *ngIf="myFormControl.c_contact.errors?.required"> * </span></label>
+                  <input type="text" formControlName="c_contact" class="form-control" /> 
+                </div>
               </div>
             </div>
+            <!-- row -->
+              
+            <div class="row">
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group">
+                  <label  >จังหวัด</label> 
+                  <select   class="form-control" formControlName="company_province_id"  (change)="doGetDistrict($event)"> 
+                    <option *ngFor="let province of provinceList" [value]="province.province_id">{{ province.c_province_th }}</option>
+                  </select>  
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group">
+                  <label >เขต/อำเภอ</label>
+                  <select   class="form-control" formControlName="company_district_id"  (change)="doGeTambon($event)"> 
+                    <option *ngFor="let district of districtList" [value]="district.district_id">{{ district.c_district_th }}</option>
+                  </select> 
+                </div>
+              </div>
+            </div>
+            <!-- row -->
+
+            <div class="row">
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group">
+                  <label  >อีเมล</label>
+                  <input type="email" formControlName="c_contact_email"  class="form-control" />
+                </div>
+              </div>  
+
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group" [ngClass]="{'has-error  text-danger':myFormControl.c_contact_phone_no.errors?.required }">
+                  <label >เบอร์โทรติดต่อ <span class="text-danger" *ngIf="myFormControl.c_contact_phone_no.errors?.required"> * </span> </label>
+                  <input type="text" formControlName="c_contact_phone_no"  class="form-control" /> 
+                </div>
+              </div>  
+            </div>  
+            <!-- row -->
+
+            <div class="row">
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group" [ngClass]="{'has-error  text-danger':myFormControl.company_template_id.errors?.required }">
+                  <label class="details">ร้านต้นแบบ <span class="text-danger" *ngIf="myFormControl.company_template_id.errors?.required"> * </span></label> 
+                  <select formControlName="company_template_id" class="form-control"  >
+                    <option *ngFor="let template of templateList" [ngValue]="template.company_template_id">{{template.lng1_c_name}}</option> 
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 ">
+                <div class="form-group">
+                  <br>
+                  <a (click)="view(myFormControl.company_template_id.value)">แสดงตัวอย่างรายการอาหาร</a>
+                </div>
+              </div>
+            </div>
+            <!-- row -->
 
             <!-- <div class="policy">
               <input type="checkbox" formControlName="agreement" />
@@ -102,10 +127,10 @@
               <button type="submit" class="btn btn-primary btn-block" style=" padding: 10px; font-size: 1.5em;"  >  Register</button>
             </div>
 
-            <div class="text-center">
+            <!-- <div class="text-center">
               <button  class="btn btn-danger btn-block" style=" padding: 5px ; font-size: 1.5em;" [routerLink]="'/login'" >Back</button>
-            </div> 
-
+            </div>  -->
+            
           </form>
         </div>
       
@@ -123,7 +148,7 @@
 
           <div class="form-group">
             <label>หมวดหมู่อาหาร</label>
-            <select   class="form-control"  >
+            <select   class="form-control" [(ngModel)]="currentMenuId" (change)="selectMenu()" >
               <option value="">แสดงทั้งหมด</option>
               <option *ngFor="let menu of currentTemplate.setmenu" [value]="menu.menu_id">{{ menu.lng1_menu_c_name }}</option>
             </select>
@@ -135,12 +160,11 @@
               <tr > 
                 <th class="text-center"> หมวดหมู่อาหาร </th>
                 <th>ชื่อรายการอาหาร </th>  
-                <th class="text-right"> ราคา </th>
-            
+                <th class="text-right"> ราคา </th> 
               </tr>
             </thead>
             <tbody > 
-              <tr *ngFor="let row of currentTemplate.setitem" > 
+              <tr *ngFor="let row of setitem" > 
                 <td class="text-center"> 
                   {{ row.lng1_menu_c_name }}
                 </td>
