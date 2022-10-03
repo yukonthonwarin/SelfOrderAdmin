@@ -1,17 +1,17 @@
-/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   font-family: 'Prompt-Regular', Prompt;
-} */
+}
 .main_box{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 80px;
-  background: #13a592;
+  background: url('src/assets/img/gallery/side.jpg') ;
   background-size: cover;
   
   }
@@ -131,6 +131,12 @@
   font-weight: 500;
   position: static;
 }
+.container .second{
+  font-size: 15px;
+  font-weight: 400;
+  position: static;
+  
+}
 .container .title::before{
   content: "";
   position: static;
@@ -145,7 +151,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 15px -20px 20px -15px;
+  margin: 15px 0px 20px 0px;
 }
 form .user-details .input-box{
   margin-bottom: 0px;
@@ -280,4 +286,28 @@ form .user-details .input-box{
     margin-left: 10px;
   }
 
+form label{
+  font-size: 12px;
+  font-weight: bold;
+}
 
+form a{
+  font-size: 12px;
+  font-weight: bold;
+  color: #09189c;
+}
+select{
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dacece;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
