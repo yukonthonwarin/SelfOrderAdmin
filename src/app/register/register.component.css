@@ -10,8 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px;
-  background: url('src/assets/img/gallery/side.jpg') ;
+  padding: 10px;
+  background: #11b19b;
   background-size: cover;
   
   }
