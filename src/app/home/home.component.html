@@ -45,11 +45,25 @@
           <li>
             <a [routerLink]="'/report'" >
               <i class="fa fa-file-text"></i>
-              <span class="nav-label">รายงานการขาย</span>
+              <span class="nav-label">รายงาน</span>
             </a>
           </li>
 
           <li>
+            <a [routerLink]="'/bill/0'" >
+              <i class="fa fa-folder-open"></i>
+              <span class="nav-label">รายการอาหาร</span>
+            </a>
+          </li>
+
+          <li>
+            <a [routerLink]="'/checklist'" >
+              <i class="fa fa-book"></i>
+              <span class="nav-label">ตรวจสอบรายการ</span>
+            </a>
+          </li>
+
+          <!-- <li>
             <a (click)="isCollapsedCheck=!isCollapsedCheck" >
               <i class="fa fa-folder-open"></i>
               <span class="nav-label">ตรวจสอบรายการ</span>
@@ -60,7 +74,7 @@
               <li><a >โต้ะรอการชำระเงิน</a></li>
               <li><a [routerLink]="'/bill/0'">เรียกเก็บเงิน</a></li>
             </ul>
-          </li>
+          </li>-->
  
           <li>
             <a (click)="isCollapsed=!isCollapsed"   >

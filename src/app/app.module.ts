@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { UofmComponent } from './setting/uofm/uofm.component';
 import { BillComponent } from './check/bill/bill.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChecklistComponent } from './checklist/checklist.component';
  
 
 @NgModule({
@@ -56,7 +57,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReportComponent, 
     RegisterComponent,
     UofmComponent,
-    BillComponent,    
+    BillComponent,
+    ChecklistComponent,    
   ],
   
   exports : [ ],
