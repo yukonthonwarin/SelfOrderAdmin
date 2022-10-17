@@ -89,12 +89,12 @@ export class RegisterComponent implements OnInit {
   }
 
   async doGetProvince(){
-    let mDataArray : any  = await this.api.get("province.list").toPromise(); 
+    let mDataArray : any  = await this.api.getProvince().toPromise(); 
     this.provinceList =  mDataArray.c_data;
   }
 
   async doGetDistrict(event:any){  
-    let mDataArray : any  = await this.api.get("district.list?province_id="+event.target.value).toPromise(); 
+    let mDataArray : any  = await this.api.getDistrict(event.target.value).toPromise(); 
     this.districtList =  mDataArray.c_data;
   }
 

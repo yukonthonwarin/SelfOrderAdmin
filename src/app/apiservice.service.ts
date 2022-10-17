@@ -164,6 +164,14 @@ export class ApiserviceService {
     return this.http.post<any>(environment.baseURL+'restaurant.register', payload );
   }
 
+  getProvince(){
+    return this.http.get<any[]>( environment.baseURL+ "province.list" );
+  }
+
+  getDistrict(province_id:any){
+    return this.http.get<any[]>( environment.baseURL+ "district.list?province_id="+province_id );
+  }
+
    
   
   
