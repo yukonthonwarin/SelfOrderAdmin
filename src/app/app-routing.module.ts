@@ -17,7 +17,7 @@ import { PrinterComponent } from './setting/printer/printer.component';
 import { RegisterComponent } from './register/register.component';
 import { UofmComponent } from './setting/uofm/uofm.component'; 
 import { BillComponent } from './check/bill/bill.component';
- 
+import { ChecklistComponent } from './checklist/checklist.component'; 
 const routes: Routes = [ 
   {path:"",pathMatch:"full",redirectTo: "login"},
   {path:"login",component: LoginComponent},
@@ -41,6 +41,7 @@ const routes: Routes = [
       {path:"recommend",component: RecommendComponent},
       {path:"printer",component: PrinterComponent},  
       {path:"bill/:order_hdr_id",component: BillComponent}, 
+      {path:"checklist",component: ChecklistComponent}
     ]
   },
   {path:"**",redirectTo: "/"}
