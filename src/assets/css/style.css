@@ -844,6 +844,7 @@ h5 {
 h6 {
   font-size: 12px;
 }
+
 h3,
 h4,
 h5 {
@@ -1867,8 +1868,9 @@ fieldset[disabled] .btn-white.active {
   border-radius: 50px;
 }
 .btn-large-dim {
-  width: 200px;
-  font-size: 20px;
+  width: 220px;
+  font-size: 15px;
+  
   
 }
 button.dim {
