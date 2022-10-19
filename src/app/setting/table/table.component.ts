@@ -72,10 +72,11 @@ export class TableComponent implements OnInit {
 
     let header = "คุณต้องการลบรายการนี้ใช่หรือไม่";
     let body = row.lng1_c_name;
+    
     this.api.confirmSwal(header, body, () => {
       // confirm delete
       let payload = this.currentRow;
-      payload.e_status = 'inactive'; 
+      payload.e_status = 'delete'; 
       this.save(payload);
     }, () => {
 
@@ -157,5 +158,4 @@ export class TableComponent implements OnInit {
       }
   }
 
-  
 }
