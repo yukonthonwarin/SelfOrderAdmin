@@ -16,7 +16,7 @@
           </div>
           <div class="col-sm-8">
             <div class="form-group text-right">
-              <button class="btn-primary btn btn-lg">
+              <button class="btn-primary btn btn-lg" (click)="add()">
                 <i class="fa fa-plus"> เพิ่ม </i>
               </button>
             </div>
@@ -32,26 +32,60 @@
               <thead>
                 <tr>
                   <th class="text-center">รูป</th>
-                  <th class="text-center">ชื่ออาหาร<img src="assets/img/flags/16/th.png" /></th>
-                  <th class="text-center">item name<img src="assets/img/flags/16/uk.png" /></th>
+                  <th class="text-center">
+                    ชื่ออาหาร<img src="assets/img/flags/16/th.png" />
+                  </th>
+                  <th class="text-center">
+                    item name<img src="assets/img/flags/16/uk.png" />
+                  </th>
                   <th class="text-center">หมวดหมู่อาหาร</th>
                   <th class="text-center">ราคา</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
-              <tbody >
-                <tr  *ngFor="let row of dataList" >
-                  <td class="text-center"><img [src]="(itemObjList[row.item_id]) ?  itemObjList[row.item_id].c_media_name : row.item_id" class="table-dataList-img"></td>
-                  <td >{{ (itemObjList[row.item_id]) ?  itemObjList[row.item_id].lng1_c_name : row.item_id}}</td>
-                  <td class="text-center">{{ (itemObjList[row.item_id]) ?  itemObjList[row.item_id].lng2_c_name : row.item_id}}</td>
-                  <td class="text-center">{{ (itemObjList[row.item_id]) ?  itemObjList[row.item_id].menu_id : row.menu_id}}</td>
-                  <td class="text-center">{{ (itemObjList[row.item_id]) ?  itemObjList[row.item_id].f_price : row.item_id}}</td>
-                  
+              <tbody>
+                <tr *ngFor="let row of dataList">
+                  <td class="text-center">
+                    <img
+                      [src]="
+                        itemObjList[row.item_id]
+                          ? itemObjList[row.item_id].c_media_name
+                          : row.item_id
+                      "
+                      class="table-dataList-img"
+                    />
+                  </td>
+                  <td>
+                    {{
+                      itemObjList[row.item_id]
+                        ? itemObjList[row.item_id].lng1_c_name
+                        : row.item_id
+                    }}
+                  </td>
+                  <td class="text-center">
+                    {{
+                      itemObjList[row.item_id]
+                        ? itemObjList[row.item_id].lng2_c_name
+                        : row.item_id
+                    }}
+                  </td>
+                  <td class="text-center">
+                    {{ (itemObjList[row.item_id]) ?  itemObjList[row.item_id].menu_id : row.item_id}}
+                  <td class="text-center">
+                    {{
+                      itemObjList[row.item_id]
+                        ? itemObjList[row.item_id].f_price
+                        : row.item_id
+                    }}
+                  </td>
+
                   <td class="text-center">
                     <div class="btn-group">
                       <!-- <button class="btn-warning btn-outline btn btn-sm btn-80" [routerLink]="'/edititem'"> Edit</button> -->
-                      <button class="btn-warning btn-outline btn btn-sm btn-80" > แก้ไข</button>
-                      <button class="btn-danger btn-outline btn btn-sm btn-80" >ลบ</button>
+
+                      <button class="btn-danger btn-outline btn btn-sm btn-80">
+                        นำออก
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -60,6 +94,26 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isEdit">
+  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="box_general padding_bottom">
+        <h2>{{mode}}รายการอาหารแนะนำ</h2>
+      </div>
+      <form [formGroup]="myForm"  validate (submit)="doPost()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>รูปรายการอาหาร</label>
+              
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
