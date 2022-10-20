@@ -10,43 +10,31 @@
         <div class="ibox-title">
           <h2>โต๊ะที่สั่งอาหาร</h2>
           <div class="ibox-tools">
-            <button class="btn btn-primary btn-xs">Show All</button>
+            <button class="btn btn-primary btn-xs" [ngClass]="{'btn-outline':!isAll}" (click)="all()">Show All</button>
           </div>
         </div>
-        <div class="ibox-content">
+        <div class="ibox-content" style="overflow-y: auto; height: calc(100vh - 260px) ;">
           <div >
             <div class="text-center">
               <button
                 class="btn btn-primary dim btn-large-dim"
                 style="text-align: left"
                 type="button"
+                *ngFor="let row of dataList"
+                (click)="show(row)"
               >
-                <div>
-                  <h3>#A001</h3>
-                  <h5 class="ibox-order">{{row.hdr.c_hdr_data.print_bill_user_name</h5>
-                  <h1>Ref No. BRN000000001</h1>
-                  <h1>ชื่อผู้สั่ง : จำรุญ มานะ</h1>
-                  <h1>เวลา : 12.00 น.</h1>
+                <div> 
+
+                  <h3>#{{row.hdr.lng1_table_c_name }}  </h3>
+                  <h5 class="ibox-order">{{row.dtl.length}} รายการ</h5>
+                  <h1>Ref No. {{row.hdr.c_hdr_data.c_print_bill_no}}</h1>
+                  <h1>ชื่อผู้สั่ง : {{row.hdr.c_hdr_data.print_bill_user_name}}</h1>
+                  <h1>เวลา : {{row.hdr.c_hdr_data.d_print_bill | date:'HH:mm' }} น.</h1>
                   
                 </div>
               </button>
             </div>
-            <div class="text-center">
-              <button
-                class="btn btn-primary dim btn-large-dim"
-                style="text-align: left"
-                type="button"
-              >
-                <div>
-                  <h3>#A002</h3>
-                  <h5 class="ibox-order">2 รายการ</h5>
-                  <h1>Ref No. BRN000000002</h1>
-                  <h1>ชื่อผู้สั่ง : ปิติ งานดี</h1>
-                  <h1>เวลา : 12.10 น.</h1>
-                  
-                </div>
-              </button>
-            </div>
+             
           </div>
         </div>
       </div>
@@ -56,62 +44,29 @@
         <div class="ibox-title">
           <h2>ออเดอร์</h2>
         </div>
-        <div class="ibox-content">
+        <div class="ibox-content" style="overflow-y: auto; height: calc(100vh - 260px) ;">
+ 
           <div class="row text-center">
-            <div class="col-md-4 px-2">
+            <div class="col-md-4 px-2" *ngFor="let row of orderList">
               <button
                 class="btn btn-warning dim btn-large-dim"
-                style="text-align: left"
-                type="button"
+                style="text-align: left; width: 100%;"
+                type="button"  
+                (click)="check(row)"
               >
                 <div >
-                  <h3 >โต๊ะ#A001</h3>
-                  <h5 class="ibox-order">(12.00น.)</h5>
-                  <h6>ตำไทย</h6>
-                  <h6>-เผ็ดมาก</h6>
-                  <h6>*หมายเหตุ : ไม่ต้องใส่มะเขือเทศเยอะ</h6>
-                  <div style="text-align: right">
-                    <i class="fa fa-check" ></i>
+                  <h3 >โต๊ะ#{{row._hdr.lng1_table_c_name}}</h3>
+                  <h5 class="ibox-order">({{row.d_create | date:'HH:mm' }}น.)</h5>
+                  <br>
+                  <h6>{{row.lng1_item_c_name}}</h6>
+                  <h6 *ngFor="let sp of row.c_special_dtl">- {{sp.f_amount}}x {{sp.lng1_special_c_name}}</h6>
+                  <h6 *ngIf="row.c_dtl_data.c_remark" >*หมายเหตุ : {{row.c_dtl_data.c_remark}}</h6>
+                  <div style="text-align: right" *ngIf="row.c_dtl_data.e_action_dtl=='complete'">
+                    <i class="fa fa-check" ></i>  
                   </div>
                 </div>
               </button>
-            </div>
-            <div class="col-md-4 px-2">
-              <button
-                class="btn btn-warning dim btn-large-dim"
-                style="text-align: left"
-                type="button"
-              >
-                <div>
-                  <h3>โต๊ะ#A001</h3>
-                  <h5 class="ibox-order">(12.00น.)</h5>
-                  <h6>ตำไทย</h6>
-                  <h6>-เผ็ดมาก</h6>
-                  <h6>*หมายเหตุ : ไม่ต้องใส่มะเขือเทศเยอะ</h6>
-                  <div style="text-align: right">
-                    <i class="fa fa-check" ></i>
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div class="col-md-4 px-2">
-                <button
-                  class="btn btn-warning dim btn-large-dim"
-                  style="text-align: left"
-                  type="button"
-                >
-                  <div>
-                    <h3>โต๊ะ#A001</h3>
-                    <h5 class="ibox-order">(12.00น.)</h5>
-                    <h6>ตำไทย</h6>
-                    <h6>-เผ็ดมาก</h6>
-                    <h6>*หมายเหตุ : ไม่ต้องใส่มะเขือเทศเยอะ</h6>
-                    <div style="text-align: right">
-                      <i class="fa fa-check" ></i>
-                    </div>
-                  </div>
-                </button>
-              </div>
+            </div> 
           </div>
         </div>
       </div>

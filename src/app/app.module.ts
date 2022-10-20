@@ -28,7 +28,6 @@ import { BillComponent } from './check/bill/bill.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChecklistComponent } from './checklist/checklist.component';
  
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -37,7 +36,7 @@ import { ChecklistComponent } from './checklist/checklist.component';
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule,     
+    CommonModule,      
   ], 
   declarations: [
     AppComponent,

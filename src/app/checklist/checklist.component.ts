@@ -9,45 +9,87 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChecklistComponent implements OnInit {
   dataList : any = [];
-  sub : any;
-  
-  a_order_hdr : any = '0';
+  orderList : any = []; 
+  isAll : boolean = true;
+  myInterval : any;
 
   constructor(private _Activatedroute:ActivatedRoute,private api: ApiserviceService) { }
 
-  ngOnInit(): void {
-    this.sub=this._Activatedroute.paramMap.subscribe(params => { 
-      console.log(params);
-      this.a_order_hdr = params.get('a_order_hdr');  
-    }); 
+  ngOnInit(): void { 
     this.doGet();
+    this.myInterval = setInterval(()=> { this.doGet()  }, 10 * 1000); 
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    clearInterval(this.myInterval);
+  }
+
+  check(dtl : any){
+    if(dtl.c_dtl_data.e_action_dtl=='complete'){ 
+      return;
+    }
+    let header = "คุณต้องการเช็ครายการนี้ใช่หรือไม่";
+    let body = dtl.lng1_item_c_name;
+    this.api.confirmSwal(header, body, () => { 
+      let payload = {
+        e_action_dtl  : 'complete',
+        order_dtl_id : dtl.order_dtl_id
+      }
+      this.doCheck(payload); 
+
+    }, () => {
+
+    })
+  }
+
+  async doCheck(payload : any)  { 
+    let result = await this.api.post("order.checker.save", payload).toPromise(); 
+    if(result.success){
+      this.api.showSwal('success', 'Save Complete', ''); 
+    } 
+  }
+
+  all(){
+    this.isAll = true;
+    this.orderList = [];
+      for (const key in this.dataList) {
+        let element = this.dataList[key]; 
+        for(const k in element['dtl']){
+          let dtl = element['dtl'][k];
+          dtl['_hdr'] = element['hdr']; 
+          this.orderList.push(dtl);
+        } 
+      } 
   }
   
-  
-
+  show(row:any){
+    this.isAll = false;
+    this.orderList = [];
+    for(const k in row['dtl']){
+      let dtl = row['dtl'][k];
+      dtl['_hdr'] = row['hdr'];  
+      this.orderList.push(dtl);
+    }
+  }
+   
   async doGet(){ 
     let today : any = moment().format('YYYY-MM-DD');
-    let r1 : any  = await this.api.get("order.list?e_action=print_bill&date="+today).toPromise(); 
+    let r1 : any  = await this.api.get("order.list?e_action=print_bill&date="+today+"&check=1").toPromise(); 
     if(r1['success']){
       this.dataList = [];
+      this.orderList = [];
       for (const key in r1.c_data) {
         let element = r1.c_data[key];
-        element['f_doc_amt'] = 0;
-        element['_check'] = false;
-        if(element['hdr']['a_order_hdr']==this.a_order_hdr){
-          element['_check'] = true;
-        }
-        for (const k2 in element['dtl']) {
-          const d = element['dtl'][k2];
-          element['f_doc_amt']  += (d['f_price_total']*1); 
-        }
         this.dataList.push(element);
-      }
-    } 
-
+        for(const k in element['dtl']){
+          let dtl = element['dtl'][k];
+          dtl['_hdr'] = element['hdr']; 
+          this.orderList.push(dtl);
+        } 
+      } 
+      console.log(this.orderList)
+    }  
   }
+
+
 }
