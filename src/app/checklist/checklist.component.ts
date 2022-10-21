@@ -25,10 +25,6 @@ export class ChecklistComponent implements OnInit {
   }
 
   check(dtl : any){
-    if(dtl.c_dtl_data.e_action_dtl=='complete'){ 
-      return;
-    }
-     
       let payload = {
         e_action_dtl  : 'complete',
         order_dtl_id : dtl.order_dtl_id
