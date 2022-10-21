@@ -61,7 +61,7 @@
                   <h6>{{row.lng1_item_c_name}}</h6>
                   <h6 *ngFor="let sp of row.c_special_dtl">- {{sp.f_amount}}x {{sp.lng1_special_c_name}}</h6>
                   <h6 *ngIf="row.c_dtl_data.c_remark" >*หมายเหตุ : {{row.c_dtl_data.c_remark}}</h6>
-                  <div style="text-align: right" *ngIf="row.c_dtl_data.e_action_dtl=='complete'">
+                  <div style="text-align: right" >
                     <i class="fa fa-check" ></i>  
                   </div>
                 </div>

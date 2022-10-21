@@ -1,7 +1,7 @@
 
 h3, h5{
     display: inline;
-    
+    width: fit-content;
  }
 .ibox-order{
     display: block;

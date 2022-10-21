@@ -28,18 +28,16 @@ export class ChecklistComponent implements OnInit {
     if(dtl.c_dtl_data.e_action_dtl=='complete'){ 
       return;
     }
-    let header = "คุณต้องการเช็ครายการนี้ใช่หรือไม่";
-    let body = dtl.lng1_item_c_name;
-    this.api.confirmSwal(header, body, () => { 
+     
       let payload = {
         e_action_dtl  : 'complete',
         order_dtl_id : dtl.order_dtl_id
       }
       this.doCheck(payload); 
 
-    }, () => {
+     () => {
 
-    })
+    }
   }
 
   async doCheck(payload : any)  { 
@@ -74,7 +72,7 @@ export class ChecklistComponent implements OnInit {
    
   async doGet(){ 
     let today : any = moment().format('YYYY-MM-DD');
-    let r1 : any  = await this.api.get("order.list?e_action=print_bill&date="+today+"&check=1").toPromise(); 
+    let r1 : any  = await this.api.get("order.checker.list?e_action=print_bill&payment="+today+"&check=1").toPromise(); 
     if(r1['success']){
       this.dataList = [];
       this.orderList = [];
