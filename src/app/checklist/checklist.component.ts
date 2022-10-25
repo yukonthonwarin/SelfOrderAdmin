@@ -17,12 +17,10 @@ export class ChecklistComponent implements OnInit {
 
   ngOnInit(): void { 
     this.doGet();
-    this.myInterval = setInterval(()=> { this.doGet()  }, 100 * 1000); 
+     
   }
 
-  ngOnDestroy() {
-    clearInterval(this.myInterval);
-  }
+  
 
   check(dtl : any){
       let payload = {
