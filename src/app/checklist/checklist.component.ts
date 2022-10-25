@@ -17,7 +17,8 @@ export class ChecklistComponent implements OnInit {
 
   ngOnInit(): void { 
     this.doGet();
-    this.myInterval = setInterval(()=> { this.doGet()  }, 10 * 1000); 
+    
+    //this.myInterval = setInterval(()=> { this.doGet()  }, 10 * 1000); 
   }
 
   ngOnDestroy() {
@@ -36,10 +37,11 @@ export class ChecklistComponent implements OnInit {
     }
   }
 
-  async doCheck(payload : any)  { 
+  async doCheck(payload : any)  {
     let result = await this.api.post("order.checker.save", payload).toPromise(); 
     if(result.success){
-      this.api.showSwal('success', 'Save Complete', ''); 
+      this.api.showSwal('success', 'Save Complete', '') ; 
+      this.doGet(); 
     } 
   }
 
