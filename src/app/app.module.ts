@@ -27,6 +27,7 @@ import { UofmComponent } from './setting/uofm/uofm.component';
 import { BillComponent } from './check/bill/bill.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChecklistComponent } from './checklist/checklist.component';
+import { ListbillComponent } from './listbill/listbill.component';
  
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { ChecklistComponent } from './checklist/checklist.component';
     RegisterComponent,
     UofmComponent,
     BillComponent,
-    ChecklistComponent,    
+    ChecklistComponent,
+    ListbillComponent,    
   ],
   
   exports : [ ],

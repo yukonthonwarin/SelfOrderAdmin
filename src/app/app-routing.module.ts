@@ -1,3 +1,4 @@
+import { ListbillComponent } from './listbill/listbill.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
       {path:"recommend",component: RecommendComponent},
       {path:"printer",component: PrinterComponent},  
       {path:"bill/:order_hdr_id",component: BillComponent}, 
-      {path:"checklist",component: ChecklistComponent}
+      {path:"checklist",component: ChecklistComponent},
+      {path:"listbill",component: ListbillComponent}
     ]
   },
   {path:"**",redirectTo: "/"}
