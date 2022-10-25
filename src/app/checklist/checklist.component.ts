@@ -17,7 +17,7 @@ export class ChecklistComponent implements OnInit {
 
   ngOnInit(): void { 
     this.doGet();
-    this.myInterval = setInterval(()=> { this.doGet()  }, 10 * 1000); 
+    this.myInterval = setInterval(()=> { this.doGet()  }, 100 * 1000); 
   }
 
   ngOnDestroy() {
